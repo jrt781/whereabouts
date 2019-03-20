@@ -15,6 +15,10 @@ class SecondViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-
+    @IBAction func logout(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: "status")
+        Switcher.updateRootVC()
+    }
+    
 }
 

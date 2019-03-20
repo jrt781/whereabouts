@@ -9,11 +9,19 @@
 import UIKit
 import FirebaseStorage
 import FirebaseDatabase
+import FirebaseAuth
 
 class FirstViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     var imagePicker: UIImagePickerController!
+    fileprivate var ref: DatabaseReference!
+    fileprivate var storageRef: StorageReference!
+    
+    /** @var handle
+     @brief The handler for the auth state listener, to allow cancelling later.
+     */
+    var handle: AuthStateDidChangeListenerHandle?
     
     @IBAction func takePhoto(_ sender: Any) {
         imagePicker = UIImagePickerController()
@@ -23,46 +31,43 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate, UII
         present(imagePicker, animated: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            // ...
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        // Get a reference to the storage service using the default Firebase App
-        let storage = Storage.storage()
 
-        // Create a root reference
-        let storageRef = storage.reference()
+        // Create references to Firebase
+        self.storageRef = Storage.storage().reference()
+        self.ref = Database.database().reference()
         
-        // Create a reference to "mountains.jpg"
-        let mountainsRef = storageRef.child("mountains.jpg")
-        
-        // Create a reference to 'images/mountains.jpg'
-        let mountainImagesRef = storageRef.child("images/mountains.jpg")
-        
-        // While the file names are the same, the references point to different files
-        mountainsRef.name == mountainImagesRef.name;            // true
-        mountainsRef.fullPath == mountainImagesRef.fullPath;    // false
-        
-        
-        
-        var ref: DatabaseReference!
-        
-        ref = Database.database().reference()
-        
-        ref.child("users").child("yeet").setValue(["username": "yo mama"])
+//        ref.child("users").child("yeet").setValue(["username": "yo mama"])
 
+        // Create a reference to the file you want to download
+        let riversRef = storageRef.child("images/rivers.jpg")
+
+        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+        riversRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
+            if error != nil {
+                // Uh-oh, an error occurred!
+            } else {
+                // Data for "images/island.jpg" is returned
+                self.imageView.image = UIImage(data: data!)
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
         imageView.image = info[.originalImage] as? UIImage
-        
-        // Get a reference to the storage service using the default Firebase App
-        let storage = Storage.storage()
-        
-        // Create a root reference
-        let storageRef = storage.reference()
         
         // Data in memory
         let dataAttempt = imageView?.image?.jpegData(compressionQuality: 1.0)
@@ -76,16 +81,18 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate, UII
         let riversRef = storageRef.child("images/rivers.jpg")
         
         // Upload the file to the path "images/rivers.jpg"
-        let uploadTask = riversRef.putData(data, metadata: nil) { (metadata, error) in
+        _ = riversRef.putData(data, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
                 // Uh-oh, an error occurred!
                 return
             }
+            
             // Metadata contains file metadata such as size, content-type.
-            let size = metadata.size
+            _ = metadata.size
+            
             // You can also access to download URL after upload.
             riversRef.downloadURL { (url, error) in
-                guard let downloadURL = url else {
+                guard url != nil else {
                     // Uh-oh, an error occurred!
                     return
                 }
