@@ -1,0 +1,6 @@
+framework module Pods_whereaboutsTests {
+  umbrella header "Pods-whereaboutsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
