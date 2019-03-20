@@ -11,6 +11,7 @@
 		25E6C8C51D38319A8F20578A /* Pods_whereaboutsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D9D3A7283D33B54C3D2E7C /* Pods_whereaboutsTests.framework */; };
 		D11F0E782242E46100657271 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F0E772242E46100657271 /* LoginViewController.swift */; };
 		D11F0E7A2242E51B00657271 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F0E792242E51B00657271 /* Switcher.swift */; };
+		D11F0E7C2242F54500657271 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F0E7B2242F54500657271 /* SignUpViewController.swift */; };
 		D161E0782241DF5900DC19A3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D161E0772241DF5900DC19A3 /* CameraViewController.swift */; };
 		D1F48E572238596300614C9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F48E562238596300614C9E /* AppDelegate.swift */; };
 		D1F48E592238596300614C9E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F48E582238596300614C9E /* FirstViewController.swift */; };
@@ -41,6 +42,7 @@
 		B0D9D3A7283D33B54C3D2E7C /* Pods_whereaboutsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_whereaboutsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D11F0E772242E46100657271 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D11F0E792242E51B00657271 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
+		D11F0E7B2242F54500657271 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D161E0772241DF5900DC19A3 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		D1F48E532238596300614C9E /* whereabouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whereabouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F48E562238596300614C9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			children = (
 				D1F48E562238596300614C9E /* AppDelegate.swift */,
 				D11F0E772242E46100657271 /* LoginViewController.swift */,
+				D11F0E7B2242F54500657271 /* SignUpViewController.swift */,
 				D1F48E582238596300614C9E /* FirstViewController.swift */,
 				D161E0772241DF5900DC19A3 /* CameraViewController.swift */,
 				D1F48E5A2238596300614C9E /* SecondViewController.swift */,
@@ -324,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1F48E5B2238596300614C9E /* SecondViewController.swift in Sources */,
+				D11F0E7C2242F54500657271 /* SignUpViewController.swift in Sources */,
 				D161E0782241DF5900DC19A3 /* CameraViewController.swift in Sources */,
 				D11F0E7A2242E51B00657271 /* Switcher.swift in Sources */,
 				D1F48E572238596300614C9E /* AppDelegate.swift in Sources */,

@@ -16,8 +16,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.hideKeyboardWhenTappedAround()
     }
     
     @IBAction func btnActionLogIn(_ sender: Any) {
@@ -25,16 +24,17 @@ class LoginViewController: UIViewController {
             return
         }
         
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            guard let authResult = authResult, error == nil else {
-                let alert = UIAlertController(title: "Register Failed", message: error!.localizedDescription, preferredStyle: .alert)
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
+            guard error == nil else {
+                let alert = UIAlertController(title: "Login Failed", message: error!.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
                     NSLog("The \"OK\" alert occured.")
                 }))
-                self.present(alert, animated: true, completion: nil)
+                self?.present(alert, animated: true, completion: nil)
                 return
             }
-            print("\(authResult.user.email!) created")
+            
+            print("\(user?.user.email ?? "User") logged in")
             UserDefaults.standard.set(true, forKey: "status")
             Switcher.updateRootVC()
         }

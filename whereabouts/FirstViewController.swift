@@ -53,7 +53,7 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate, UII
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         riversRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
             if error != nil {
-                // Uh-oh, an error occurred!
+                print("There was an error: ", error!.localizedDescription)
             } else {
                 // Data for "images/island.jpg" is returned
                 self.imageView.image = UIImage(data: data!)
@@ -83,7 +83,7 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate, UII
         // Upload the file to the path "images/rivers.jpg"
         _ = riversRef.putData(data, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
-                // Uh-oh, an error occurred!
+                print("There was an error: ", error!.localizedDescription)
                 return
             }
             
@@ -93,7 +93,7 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate, UII
             // You can also access to download URL after upload.
             riversRef.downloadURL { (url, error) in
                 guard url != nil else {
-                    // Uh-oh, an error occurred!
+                    print("There was an error: ", error!.localizedDescription)
                     return
                 }
             }
