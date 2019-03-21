@@ -202,7 +202,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zft-G6-y3l">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zft-G6-y3l">
                                 <rect key="frame" x="62.5" y="170" width="250" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="yeS-7K-xl8"/>
@@ -227,8 +227,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Zkb-WW-xVb"/>
                     <connections>
-                        <outlet property="emailTextField" destination="Zft-G6-y3l" id="6ew-a8-NnH"/>
                         <outlet property="passwordTextField" destination="Zcm-4y-QV4" id="NJV-XM-uvw"/>
+                        <outlet property="usernameTextField" destination="Zft-G6-y3l" id="6ew-a8-NnH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gw2-tj-pVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -243,7 +243,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="53X-cD-luX">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="53X-cD-luX">
                                 <rect key="frame" x="62.5" y="145" width="250" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="trb-5r-Iay"/>
@@ -314,8 +314,8 @@
                     </view>
                     <connections>
                         <outlet property="confirmTextField" destination="T9Z-HB-NyJ" id="9sg-YJ-bh6"/>
-                        <outlet property="emailTextField" destination="53X-cD-luX" id="vUk-pI-LBB"/>
                         <outlet property="passwordTextField" destination="R0R-1g-5E4" id="YNx-Q3-bkC"/>
+                        <outlet property="usernameTextField" destination="53X-cD-luX" id="vUk-pI-LBB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nSP-IA-Wua" userLabel="First Responder" sceneMemberID="firstResponder"/>

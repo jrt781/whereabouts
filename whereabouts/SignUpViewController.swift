@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
     
@@ -21,9 +21,20 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUp(_ sender: Any) {
-        guard let email = emailTextField.text, let password = passwordTextField.text, let confirm = confirmTextField.text else {
+        guard let username = usernameTextField.text, let password = passwordTextField.text, let confirm = confirmTextField.text else {
             return
         }
+        
+        if username.contains("@") {
+            let alert = UIAlertController(title: "Signup Didn't Work!", message: "Username cannot contain @", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return;
+        }
+        
+        let email = username + "@whereabouts.com"
         
         if password != confirm {
             let alert = UIAlertController(title: "Passwords do not match", message: "", preferredStyle: .alert)
@@ -36,7 +47,9 @@ class SignUpViewController: UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             guard let authResult = authResult, error == nil else {
-                let alert = UIAlertController(title: "Register Failed", message: error!.localizedDescription, preferredStyle: .alert)
+                let message = error!.localizedDescription
+                let replaced = message.replacingOccurrences(of: "email address", with: "username")
+                let alert = UIAlertController(title: "Register Failed", message: replaced, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
                     NSLog("The \"OK\" alert occured.")
                 }))

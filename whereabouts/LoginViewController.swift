@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
@@ -20,13 +20,17 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func btnActionLogIn(_ sender: Any) {
-        guard let email = emailTextField.text, let password = passwordTextField.text else {
+        guard let username = usernameTextField.text, let password = passwordTextField.text else {
             return
         }
         
+        let email = username + "@whereabouts.com"
+
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
             guard error == nil else {
-                let alert = UIAlertController(title: "Login Failed", message: error!.localizedDescription, preferredStyle: .alert)
+                let message = error!.localizedDescription
+                let replaced = message.replacingOccurrences(of: "email address", with: "username")
+                let alert = UIAlertController(title: "Login Failed", message: replaced, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
                     NSLog("The \"OK\" alert occured.")
                 }))
