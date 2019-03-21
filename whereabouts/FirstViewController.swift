@@ -15,6 +15,7 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate, UII
     
     @IBOutlet weak var imageView: UIImageView!
     var imagePicker: UIImagePickerController!
+    
     fileprivate var ref: DatabaseReference!
     fileprivate var storageRef: StorageReference!
     

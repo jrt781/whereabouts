@@ -1,24 +1,31 @@
 //
-//  CameraViewController.swift
+//  ProfileViewController.swift
 //  whereabouts
 //
-//  Created by Jake Tyler on 3/19/19.
+//  Created by Jake Tyler on 3/21/19.
 //  Copyright © 2019 Jake Tyler. All rights reserved.
 //
 
 import UIKit
+import FirebaseAuth
 
-class CameraViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
-    @IBOutlet weak var photoPreviewImageView: UIImageView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func didTapOnTakePhotoButton(_ sender: Any) {
+    @IBAction func logout(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        UserDefaults.standard.set(false, forKey: "status")
+        Switcher.updateRootVC()
     }
     
     /*

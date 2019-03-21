@@ -38,6 +38,10 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            if let firebaseUser = user?.user {
+                let uid = firebaseUser.uid
+            }
+            
             print("\(user?.user.email ?? "User") logged in")
             UserDefaults.standard.set(true, forKey: "status")
             Switcher.updateRootVC()

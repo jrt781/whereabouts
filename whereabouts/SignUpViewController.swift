@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseDatabase
 import FirebaseAuth
 
 class SignUpViewController: UIViewController {
+    
+    fileprivate var ref: DatabaseReference!
+    fileprivate var storageRef: StorageReference!
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -18,6 +23,10 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
+        // Create references to Firebase
+        self.storageRef = Storage.storage().reference()
+        self.ref = Database.database().reference()
     }
     
     @IBAction func signUp(_ sender: Any) {
@@ -57,15 +66,20 @@ class SignUpViewController: UIViewController {
                 return
             }
             print("\(authResult.user.email!) created")
+            
+            let uid = authResult.user.uid
+            self.ref.child("users").child(uid).setValue([
+                "username": username,
+                "yeet": "hello"
+                ])
+            
             UserDefaults.standard.set(true, forKey: "status")
             Switcher.updateRootVC()
         }
     }
     
     @IBAction func backToLogIn(_ sender: Any) {
-        self.dismiss(animated: true) {
-            
-        }
+        self.dismiss(animated: true) {}
     }
     
     /*
