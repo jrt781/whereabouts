@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SecondViewController: UIViewController {
 
@@ -16,6 +17,12 @@ class SecondViewController: UIViewController {
     }
 
     @IBAction func logout(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
         UserDefaults.standard.set(false, forKey: "status")
         Switcher.updateRootVC()
     }
