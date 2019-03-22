@@ -14,12 +14,22 @@ class FindFriendsViewController: UIViewController {
     fileprivate var ref: DatabaseReference!
     fileprivate var storageRef: StorageReference!
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Create references to Firebase
         self.storageRef = Storage.storage().reference()
         self.ref = Database.database().reference()
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search usernames"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
 
@@ -33,4 +43,11 @@ class FindFriendsViewController: UIViewController {
     }
     */
 
+}
+
+extension FindFriendsViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        // TODO
+    }
 }
