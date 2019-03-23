@@ -11,7 +11,7 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     fileprivate var ref: DatabaseReference!
     fileprivate var storageRef: StorageReference!
@@ -27,6 +27,30 @@ class SignUpViewController: UIViewController {
         // Create references to Firebase
         self.storageRef = Storage.storage().reference()
         self.ref = Database.database().reference()
+        
+        usernameTextField.delegate = self
+        usernameTextField.tag = 0
+        passwordTextField.delegate = self
+        passwordTextField.tag = 1
+        confirmTextField.delegate = self
+        confirmTextField.tag = 2
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+            
+            if textField == confirmTextField {
+                signUp(confirmTextField)
+            }
+        }
+        // Do not add a line break
+        return false
     }
     
     @IBAction func signUp(_ sender: Any) {
