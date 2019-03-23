@@ -12,8 +12,8 @@
 		D11F0E782242E46100657271 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F0E772242E46100657271 /* LoginViewController.swift */; };
 		D11F0E7A2242E51B00657271 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F0E792242E51B00657271 /* Switcher.swift */; };
 		D11F0E7C2242F54500657271 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F0E7B2242F54500657271 /* SignUpViewController.swift */; };
+		D1816DF52246F13E00E6A475 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF42246F13E00E6A475 /* Constants.swift */; };
 		D1B05F6D224435F900153D7D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B05F6C224435F900153D7D /* ProfileViewController.swift */; };
-		D1B05F6F2244389800153D7D /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B05F6E2244389800153D7D /* FindFriendsViewController.swift */; };
 		D1F48E572238596300614C9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F48E562238596300614C9E /* AppDelegate.swift */; };
 		D1F48E592238596300614C9E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F48E582238596300614C9E /* FirstViewController.swift */; };
 		D1F48E5B2238596300614C9E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F48E5A2238596300614C9E /* SecondViewController.swift */; };
@@ -44,8 +44,8 @@
 		D11F0E772242E46100657271 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D11F0E792242E51B00657271 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		D11F0E7B2242F54500657271 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D1816DF42246F13E00E6A475 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D1B05F6C224435F900153D7D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		D1B05F6E2244389800153D7D /* FindFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
 		D1F48E532238596300614C9E /* whereabouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whereabouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F48E562238596300614C9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1F48E582238596300614C9E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -121,12 +121,12 @@
 				D1F48E582238596300614C9E /* FirstViewController.swift */,
 				D1F48E5A2238596300614C9E /* SecondViewController.swift */,
 				D1B05F6C224435F900153D7D /* ProfileViewController.swift */,
-				D1B05F6E2244389800153D7D /* FindFriendsViewController.swift */,
 				D1F48E5F2238596400614C9E /* Assets.xcassets */,
 				D1F48E612238596400614C9E /* LaunchScreen.storyboard */,
 				D1F48E642238596400614C9E /* Info.plist */,
 				D1F48E782238599300614C9E /* GoogleService-Info.plist */,
 				D11F0E792242E51B00657271 /* Switcher.swift */,
+				D1816DF42246F13E00E6A475 /* Constants.swift */,
 			);
 			path = whereabouts;
 			sourceTree = "<group>";
@@ -334,9 +334,9 @@
 				D11F0E7A2242E51B00657271 /* Switcher.swift in Sources */,
 				D1F48E572238596300614C9E /* AppDelegate.swift in Sources */,
 				D1B05F6D224435F900153D7D /* ProfileViewController.swift in Sources */,
-				D1B05F6F2244389800153D7D /* FindFriendsViewController.swift in Sources */,
 				D11F0E782242E46100657271 /* LoginViewController.swift in Sources */,
 				D1F48E592238596300614C9E /* FirstViewController.swift in Sources */,
+				D1816DF52246F13E00E6A475 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

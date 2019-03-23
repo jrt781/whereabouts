@@ -77,11 +77,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="OeN-IG-p0V">
-                                <rect key="frame" x="130" y="299" width="114" height="69"/>
+                                <rect key="frame" x="70" y="107" width="235" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PP5-fa-4NS">
-                                        <rect key="frame" x="31" y="0.0" width="52" height="30"/>
+                                        <rect key="frame" x="91.5" y="0.0" width="52" height="30"/>
                                         <state key="normal" title="Log out"/>
                                         <connections>
                                             <action selector="logout:" destination="b6G-lZ-cew" eventType="touchUpInside" id="6sj-DW-zUM"/>
@@ -89,13 +89,12 @@
                                             <action selector="logout:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="yEE-yN-iTb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muJ-XO-RQX">
-                                        <rect key="frame" x="0.0" y="39" width="114" height="30"/>
-                                        <state key="normal" title="Find new friends"/>
-                                        <connections>
-                                            <segue destination="T0K-1A-H83" kind="show" id="3fg-b1-19X"/>
-                                        </connections>
-                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search usernames to add friends" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5g3-Cf-27L">
+                                        <rect key="frame" x="0.0" y="39" width="235" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                    </textField>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -105,6 +104,9 @@
                     <navigationItem key="navigationItem" id="1YA-Fy-Csc">
                         <barButtonItem key="backBarButtonItem" title="Back" id="wcY-B2-1Lr"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="findFriendsTextField" destination="5g3-Cf-27L" id="vJG-Sc-kWI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daK-6N-DIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ZrY-KQ-1wP" userLabel="Exit" sceneMemberID="exit"/>
@@ -291,43 +293,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="938.39999999999998" y="-0.44977511244377816"/>
-        </scene>
-        <!--Find New Friends-->
-        <scene sceneID="8ex-we-vzR">
-            <objects>
-                <viewController id="T0K-1A-H83" customClass="FindFriendsViewController" customModule="whereabouts" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fGq-lp-YPX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k4t-rk-cIS">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Hmm-6H-24f"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Find New Friends" id="Adf-WM-mPm">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="Ub1-yk-htG"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="DiY-wg-SUG" id="QjK-nN-aTa"/>
-                        <outlet property="tableView" destination="k4t-rk-cIS" id="Rwe-ok-RGm"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U5F-1C-QAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="DiY-wg-SUG">
-                    <connections>
-                        <outlet property="delegate" destination="T0K-1A-H83" id="Ly8-oK-nbu"/>
-                        <outlet property="searchContentsController" destination="T0K-1A-H83" id="pq2-CC-gLN"/>
-                        <outlet property="searchResultsDataSource" destination="T0K-1A-H83" id="wNy-FJ-kx0"/>
-                        <outlet property="searchResultsDelegate" destination="T0K-1A-H83" id="mHz-M7-bzE"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="4160.8000000000002" y="-0.44977511244377816"/>
         </scene>
         <!--Profile-->
         <scene sceneID="let-MN-Fnw">

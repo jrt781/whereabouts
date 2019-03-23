@@ -43,7 +43,8 @@ class LoginViewController: UIViewController {
             }
             
             print("\(user?.user.email ?? "User") logged in")
-            UserDefaults.standard.set(true, forKey: "status")
+            UserDefaults.standard.set(true, forKey: Constants.IS_LOGGED_IN)
+            UserDefaults.standard.set(username, forKey: Constants.CURRENT_USERNAME)
             Switcher.updateRootVC()
         }
         

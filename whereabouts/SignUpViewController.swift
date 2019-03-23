@@ -68,12 +68,13 @@ class SignUpViewController: UIViewController {
             print("\(authResult.user.email!) created")
             
             let uid = authResult.user.uid
-            self.ref.child("users").child(uid).setValue([
-                "username": username,
+            self.ref.child("users").child(username).setValue([
+                "id": uid,
                 "yeet": "hello"
                 ])
             
-            UserDefaults.standard.set(true, forKey: "status")
+            UserDefaults.standard.set(true, forKey: Constants.IS_LOGGED_IN)
+            UserDefaults.standard.set(username, forKey: Constants.CURRENT_USERNAME)
             Switcher.updateRootVC()
         }
     }

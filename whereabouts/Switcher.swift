@@ -14,10 +14,10 @@ class Switcher {
     
     static func updateRootVC(){
         
-        let status = UserDefaults.standard.bool(forKey: "status")
+        let isLoggedIn = UserDefaults.standard.bool(forKey: Constants.IS_LOGGED_IN)
         var rootVC : UIViewController?
         
-        if(status == true){
+        if(isLoggedIn == true){
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
         } else {
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
