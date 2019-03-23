@@ -60,9 +60,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            if let firebaseUser = user?.user {
-                let uid = firebaseUser.uid
-            }
+//            if let firebaseUser = user?.user {
+//                let uid = firebaseUser.uid
+//            }
             
             print("\(user?.user.email ?? "User") logged in")
             UserDefaults.standard.set(true, forKey: Constants.IS_LOGGED_IN)
