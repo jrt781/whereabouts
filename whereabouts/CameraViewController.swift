@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  CameraViewController.swift
 //  whereabouts
 //
 //  Created by Jake Tyler on 3/12/19.
@@ -11,7 +11,7 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 
-class FirstViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CameraViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     var imagePicker: UIImagePickerController!
@@ -51,8 +51,8 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate, UII
         // Create a reference to the file you want to download
         let riversRef = storageRef.child("images/rivers.jpg")
 
-        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        riversRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
+        // Download in memory with a maximum allowed size of 20MB (20 * 1024 * 1024 bytes)
+        riversRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
             if error != nil {
                 print("There was an error: ", error!.localizedDescription)
             } else {
@@ -70,38 +70,24 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate, UII
         imagePicker.dismiss(animated: true, completion: nil)
         imageView.image = info[.originalImage] as? UIImage
         
-        // Data in memory
-        let dataAttempt = imageView?.image?.jpegData(compressionQuality: 1.0)
+        self.performSegue(withIdentifier: "chooseFriend", sender: self)
         
-        guard let data = dataAttempt else {
-            // Uh-oh, an error occurred!
-            return
-        }
-        
-        // Create a reference to the file you want to upload
-        let riversRef = storageRef.child("images/rivers.jpg")
-        
-        // Upload the file to the path "images/rivers.jpg"
-        _ = riversRef.putData(data, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else {
-                print("There was an error: ", error!.localizedDescription)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "chooseFriend") {
+            // Data in memory
+            let dataAttempt = imageView?.image?.jpegData(compressionQuality: 1.0)
+            
+            guard let data = dataAttempt else {
+                // Uh-oh, an error occurred!
                 return
             }
             
-            // Metadata contains file metadata such as size, content-type.
-            _ = metadata.size
-            
-            // You can also access to download URL after upload.
-            riversRef.downloadURL { (url, error) in
-                guard url != nil else {
-                    print("There was an error: ", error!.localizedDescription)
-                    return
-                }
-            }
+            // Create a new variable to store the instance of PlayerTableViewController
+            let destinationVC = segue.destination as! ChooseFriendTableViewController
+            destinationVC.imageData = data
         }
-        
-        
-        
     }
 
 }
