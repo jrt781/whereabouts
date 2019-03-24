@@ -16,10 +16,11 @@
 		D1816DF72246FE9F00E6A475 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF62246FE9F00E6A475 /* Util.swift */; };
 		D1816DF92247047200E6A475 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF82247047200E6A475 /* FriendsTableViewController.swift */; };
 		D1816DFB224712DD00E6A475 /* ChooseFriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DFA224712DD00E6A475 /* ChooseFriendTableViewController.swift */; };
+		D1816DFD2247240B00E6A475 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DFC2247240B00E6A475 /* PostsTableViewController.swift */; };
+		D1816DFF2247289100E6A475 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DFE2247289100E6A475 /* PostViewController.swift */; };
 		D1B05F6D224435F900153D7D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B05F6C224435F900153D7D /* ProfileViewController.swift */; };
 		D1F48E572238596300614C9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F48E562238596300614C9E /* AppDelegate.swift */; };
 		D1F48E592238596300614C9E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F48E582238596300614C9E /* CameraViewController.swift */; };
-		D1F48E5B2238596300614C9E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F48E5A2238596300614C9E /* SecondViewController.swift */; };
 		D1F48E5E2238596300614C9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1F48E5C2238596300614C9E /* Main.storyboard */; };
 		D1F48E602238596400614C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1F48E5F2238596400614C9E /* Assets.xcassets */; };
 		D1F48E632238596400614C9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1F48E612238596400614C9E /* LaunchScreen.storyboard */; };
@@ -51,11 +52,12 @@
 		D1816DF62246FE9F00E6A475 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		D1816DF82247047200E6A475 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D1816DFA224712DD00E6A475 /* ChooseFriendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFriendTableViewController.swift; sourceTree = "<group>"; };
+		D1816DFC2247240B00E6A475 /* PostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
+		D1816DFE2247289100E6A475 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		D1B05F6C224435F900153D7D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1F48E532238596300614C9E /* whereabouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whereabouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F48E562238596300614C9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1F48E582238596300614C9E /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		D1F48E5A2238596300614C9E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		D1F48E5D2238596300614C9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1F48E5F2238596400614C9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1F48E622238596400614C9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -126,7 +128,8 @@
 				D11F0E7B2242F54500657271 /* SignUpViewController.swift */,
 				D1F48E582238596300614C9E /* CameraViewController.swift */,
 				D1816DFA224712DD00E6A475 /* ChooseFriendTableViewController.swift */,
-				D1F48E5A2238596300614C9E /* SecondViewController.swift */,
+				D1816DFC2247240B00E6A475 /* PostsTableViewController.swift */,
+				D1816DFE2247289100E6A475 /* PostViewController.swift */,
 				D1B05F6C224435F900153D7D /* ProfileViewController.swift */,
 				D1816DF82247047200E6A475 /* FriendsTableViewController.swift */,
 				D1F48E5F2238596400614C9E /* Assets.xcassets */,
@@ -338,8 +341,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1816DFF2247289100E6A475 /* PostViewController.swift in Sources */,
 				D1816DFB224712DD00E6A475 /* ChooseFriendTableViewController.swift in Sources */,
-				D1F48E5B2238596300614C9E /* SecondViewController.swift in Sources */,
 				D1816DF72246FE9F00E6A475 /* Util.swift in Sources */,
 				D11F0E7C2242F54500657271 /* SignUpViewController.swift in Sources */,
 				D11F0E7A2242E51B00657271 /* Switcher.swift in Sources */,
@@ -348,6 +351,7 @@
 				D1B05F6D224435F900153D7D /* ProfileViewController.swift in Sources */,
 				D11F0E782242E46100657271 /* LoginViewController.swift in Sources */,
 				D1F48E592238596300614C9E /* CameraViewController.swift in Sources */,
+				D1816DFD2247240B00E6A475 /* PostsTableViewController.swift in Sources */,
 				D1816DF52246F13E00E6A475 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
