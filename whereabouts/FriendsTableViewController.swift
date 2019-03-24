@@ -12,10 +12,14 @@ class FriendsTableViewController: UITableViewController {
 
     var friendUsernames : [String] = []
     
+    func getFriendsData() {
+        friendUsernames = UserDefaults.standard.array(forKey: Constants.FRIEND_USERNAMES) as? [String] ?? [String]()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateFriends()
+        getFriendsData()
         
         print("FriendsTableViewController has loaded and the friends are", friendUsernames)
 
@@ -25,22 +29,20 @@ class FriendsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getFriendsData()
+        tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        updateFriends()
         return friendUsernames.count
-    }
-    
-    func updateFriends() {
-        friendUsernames = UserDefaults.standard.array(forKey: Constants.FRIEND_USERNAMES) as? [String] ?? [String]()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-
-        updateFriends()
         
         cell.textLabel?.text = (UserDefaults.standard.array(forKey: Constants.FRIEND_USERNAMES) as? [String] ?? [String]())[indexPath.row]
 
