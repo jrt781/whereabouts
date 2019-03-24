@@ -86,6 +86,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
             self.ref.child("users").child(snapshot.key).child("friends").child(currentUsername).setValue(true)
             self.ref.child("users").child(currentUsername).child("friends").child(snapshot.key).setValue(true)
 
+            // Add friend to list in app's memory
+            var friendUsernames = UserDefaults.standard.array(forKey: Constants.FRIEND_USERNAMES) as! [String]
+            friendUsernames.append(snapshot.key)
+            UserDefaults.standard.set(friendUsernames, forKey: Constants.FRIEND_USERNAMES)
             
         }) { (error) in
             print(error.localizedDescription)

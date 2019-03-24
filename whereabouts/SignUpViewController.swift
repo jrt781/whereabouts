@@ -97,6 +97,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 "yeet": "hello"
                 ])
             
+            UserDefaults.standard.set([String](), forKey: Constants.FRIEND_USERNAMES)
             UserDefaults.standard.set(true, forKey: Constants.IS_LOGGED_IN)
             UserDefaults.standard.set(username, forKey: Constants.CURRENT_USERNAME)
             Switcher.updateRootVC()

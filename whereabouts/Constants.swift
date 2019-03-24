@@ -11,4 +11,5 @@ import Foundation
 struct Constants {
     static let CURRENT_USERNAME = "CURRENT_USERNAME"
     static let IS_LOGGED_IN = "IS_LOGGED_IN"
+    static let FRIEND_USERNAMES = "FRIEND_USERNAMES"
 }
