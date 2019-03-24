@@ -57,10 +57,17 @@ class ChooseFriendTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let friendUsernameToSentTo = friendUsernames[indexPath.row]
+        let usernameOfFriendToSendPostTo = friendUsernames[indexPath.row]
         
         guard let imageData = imageData else {
             print("The image data is null!!!")
+            return
+        }
+        
+        guard let currentUsername = UserDefaults.standard.string(forKey: Constants.CURRENT_USERNAME) else {
+            // Error: user is not logged in somehow?? Just log them out
+            UserDefaults.standard.set(false, forKey: Constants.IS_LOGGED_IN)
+            Switcher.updateRootVC()
             return
         }
         
@@ -74,11 +81,14 @@ class ChooseFriendTableViewController: UITableViewController {
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: true, completion: nil)
         
+        let imageId = UUID().uuidString
+        print("Image id:", imageId)
+        
         // Create a reference to the file you want to upload
-        let riversRef = storageRef.child("images/rivers.jpg")
+        let imageRef = storageRef.child("images/\(imageId).jpg")
         
         // Upload the file to the path "images/rivers.jpg"
-        _ = riversRef.putData(imageData, metadata: nil) { (metadata, error) in
+        _ = imageRef.putData(imageData, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
                 print("There was an error: ", error!.localizedDescription)
                 return
@@ -87,12 +97,24 @@ class ChooseFriendTableViewController: UITableViewController {
             // Metadata contains file metadata such as size, content-type.
             _ = metadata.size
             
+            let postId = UUID().uuidString
+            
+            self.ref.child("posts").child(postId).setValue([
+                "toUsername": usernameOfFriendToSendPostTo,
+                "fromUsername": currentUsername,
+                "imageId": imageId
+                ])
+
+            self.ref.child("users").child(usernameOfFriendToSendPostTo).child("postsFromFriends").child(postId).setValue(true)
+            self.ref.child("users").child(currentUsername).child("postsToFriends").child(postId).setValue(true)
+            
             // You can also access to download URL after upload.
-            riversRef.downloadURL { (url, error) in
-                guard url != nil else {
+            imageRef.downloadURL { (url, error) in
+                guard let url = url else {
                     print("There was an error: ", error!.localizedDescription)
                     return
                 }
+                print("image url is", url.absoluteString)
             }
             
             // Dismiss loading icon
