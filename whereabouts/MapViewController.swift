@@ -27,8 +27,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         mapView.delegate = self
-        mapView.register(PostMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-
+        mapView.register(PostFlagView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        //PostFlagView -- only an image
+        //PostMarkerView -- wrapped in a built-in pin
         
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()

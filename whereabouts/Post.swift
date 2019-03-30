@@ -25,7 +25,7 @@ class Post: NSObject, MKAnnotation, NSCoding {
     let coordinate: CLLocationCoordinate2D
     
     var title: String? {
-        return toUsername
+        return toUsername + "'s post"
     }
     
     var subtitle: String? {

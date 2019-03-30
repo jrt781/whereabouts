@@ -15,7 +15,7 @@ class PostMarkerView: MKMarkerAnnotationView {
             // 1
             guard let post = newValue as? Post else { return }
             canShowCallout = true
-            calloutOffset = CGPoint(x: -5, y: 5)
+//            calloutOffset = CGPoint(x: -5, y: 5)
             rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             // 2
 //            markerTintColor = artwork.markerTintColor
