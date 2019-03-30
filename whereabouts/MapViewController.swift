@@ -8,9 +8,14 @@
 
 import UIKit
 import MapKit
+import FirebaseDatabase
+import FirebaseStorage
 
 class MapViewController: UIViewController, LocationObserver {
 
+    fileprivate var ref: DatabaseReference!
+    fileprivate var storageRef: StorageReference!
+    
     let locationManager = CLLocationManager()
     var needsToCenter = false
     var posts: [Post] = []
@@ -27,6 +32,10 @@ class MapViewController: UIViewController, LocationObserver {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Create references to Firebase
+        self.ref = Database.database().reference()
+        self.storageRef = Storage.storage().reference()
+        
         mapView.delegate = self
         mapView.register(PostFlagView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         //PostFlagView -- only an image
@@ -42,15 +51,53 @@ class MapViewController: UIViewController, LocationObserver {
         self.needsToCenter = true;
         mapView.showsUserLocation = true
         
-        let post = Post(toUsername: "jrtyler", fromUsername: "myFriend", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 37.787392, longitude: -122.408189))
+//        let post = Post(toUsername: "jrtyler", fromUsername: "myFriend", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 37.787392, longitude: -122.408189))
+//
+//        mapView.addAnnotation(post)
+//        posts.append(post)
+//
+//        let post2 = Post(toUsername: "jrtyler", fromUsername: "myFriend2", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 40.247007, longitude: -111.648264))
+//
+//        mapView.addAnnotation(post2)
+//        posts.append(post2)
         
-        mapView.addAnnotation(post)
-        posts.append(post)
+        guard let currentUsername = UserDefaults.standard.string(forKey: Constants.CURRENT_USERNAME) else {
+            // Error: user is not logged in somehow?? Just log them out
+            UserDefaults.standard.set(false, forKey: Constants.IS_LOGGED_IN)
+            Switcher.updateRootVC()
+            return
+        }
         
-        let post2 = Post(toUsername: "jrtyler", fromUsername: "myFriend2", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 40.247007, longitude: -111.648264))
-        
-        mapView.addAnnotation(post2)
-        posts.append(post2)
+        let _ = ref.child("users").child(currentUsername).child("postsFromFriends").observeSingleEvent(of: DataEventType.value) { (snapshot) in
+            let posts = snapshot.value as? [String : AnyObject] ?? [:]
+            for (key, _) in posts {
+                self.ref.child("posts").child(key).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+                    let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+                    let toUsername = postDict["toUsername"] as! String
+                    let fromUsername = postDict["fromUsername"] as! String
+                    let lat = postDict["latitude"] as! Double
+                    let long = postDict["longitude"] as! Double
+                    let imageId = postDict["imageId"] as! String
+                    
+                    // Create a reference to the file you want to download
+                    let imageRef = self.storageRef.child("images/\(imageId).jpg")
+                    
+                    // Download in memory with a maximum allowed size of 20MB (20 * 1024 * 1024 bytes)
+                    imageRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
+                        if error != nil {
+                            print("There was an error: ", error!.localizedDescription)
+                        } else {
+                            // Data for "images/island.jpg" is returned
+                            let image = UIImage(data: data!)
+                            
+                            let post = Post(toUsername: toUsername, fromUsername: fromUsername, image: image!, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
+                            self.mapView.addAnnotation(post)
+                            self.posts.append(post)
+                        }
+                    }
+                })
+            }
+        }
     }
     
     /*
@@ -66,6 +113,7 @@ class MapViewController: UIViewController, LocationObserver {
     // TODO store posts in model?????
     // TODO appropriately tell users that they can't open image of locked posts
     // TODO get posts from friends even when app is closed
+    // TODO display actual posts on map (and probably fill out data with locations that don't have them currently)
     
     func onLocationUpdate(userLocation: CLLocation) {
         var selectedAnnotation: Post?
