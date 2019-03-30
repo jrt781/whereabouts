@@ -51,12 +51,12 @@ class MapViewController: UIViewController, LocationObserver {
         self.needsToCenter = true;
         mapView.showsUserLocation = true
         
-//        let post = Post(toUsername: "jrtyler", fromUsername: "myFriend", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 37.787392, longitude: -122.408189))
+//        let post = Post(postId: "12", toUsername: "jrtyler", fromUsername: "myFriend", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 37.787392, longitude: -122.408189), locked: false, postTime: 1553962641.8981, viewTime: 1553969842.477964)
 //
 //        mapView.addAnnotation(post)
 //        posts.append(post)
 //
-//        let post2 = Post(toUsername: "jrtyler", fromUsername: "myFriend2", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 40.247007, longitude: -111.648264))
+//        let post2 = Post(postId: "13", toUsername: "jrtyler", fromUsername: "myFriend2", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 40.247007, longitude: -111.648264), locked: false, postTime: 1553962641.8981, viewTime: 1553969842.477964)
 //
 //        mapView.addAnnotation(post2)
 //        posts.append(post2)
@@ -78,6 +78,9 @@ class MapViewController: UIViewController, LocationObserver {
                     let lat = postDict["latitude"] as! Double
                     let long = postDict["longitude"] as! Double
                     let imageId = postDict["imageId"] as! String
+                    let locked = postDict["locked"] as! Bool
+                    let postTime = postDict["postTime"] as! TimeInterval
+                    let viewTime = postDict["viewTime"] as! TimeInterval
                     
                     // Create a reference to the file you want to download
                     let imageRef = self.storageRef.child("images/\(imageId).jpg")
@@ -90,7 +93,7 @@ class MapViewController: UIViewController, LocationObserver {
                             // Data for "images/island.jpg" is returned
                             let image = UIImage(data: data!)
                             
-                            let post = Post(toUsername: toUsername, fromUsername: fromUsername, image: image!, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
+                            let post = Post(postId: key, toUsername: toUsername, fromUsername: fromUsername, image: image!, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long), locked: locked, postTime: postTime, viewTime: viewTime)
                             self.mapView.addAnnotation(post)
                             self.posts.append(post)
                         }
@@ -113,7 +116,8 @@ class MapViewController: UIViewController, LocationObserver {
     // TODO store posts in model?????
     // TODO appropriately tell users that they can't open image of locked posts
     // TODO get posts from friends even when app is closed
-    // TODO display actual posts on map (and probably fill out data with locations that don't have them currently)
+    // TODO Record the times the posts were made and when they were unlocked and/or seen, and display the most recent posts
+    // TODO allow users to post photos from library
     
     func onLocationUpdate(userLocation: CLLocation) {
         var selectedAnnotation: Post?
@@ -131,6 +135,7 @@ class MapViewController: UIViewController, LocationObserver {
                 // Check if the distance is within the unlocked region
                 if distance < 15 {
                     post.locked = false
+                    self.ref.child("posts").child(post.postId).child("locked").setValue(false)
                 }
                 
                 // If the distance has changed, update the markers

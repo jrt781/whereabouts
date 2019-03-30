@@ -108,12 +108,18 @@ class ChooseFriendTableViewController: UITableViewController {
                 return
             }
             
+            let postTime = NSDate().timeIntervalSince1970
+            //var date = NSDate(timeIntervalSince1970: postTime) // Read interval
+            
             self.ref.child("posts").child(postId).setValue([
                 "toUsername": usernameOfFriendToSendPostTo,
                 "fromUsername": currentUsername,
                 "imageId": imageId,
                 "latitude": userLocation.latitude,
-                "longitude": userLocation.longitude
+                "longitude": userLocation.longitude,
+                "locked": true,
+                "postTime": postTime,
+                "viewTime": 0
                 ])
 
             self.ref.child("users").child(usernameOfFriendToSendPostTo).child("postsFromFriends").child(postId).setValue(true)

@@ -20,6 +20,8 @@ class PostViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var fromUsernameLabel: UILabel!
+    @IBOutlet weak var sentAtLabel: UILabel!
+    @IBOutlet weak var viewedAtLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,15 @@ class PostViewController: UIViewController {
             
                 let fromUsername = value?["fromUsername"] as? String ?? "Error"
                 self.fromUsernameLabel.text = fromUsername
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                
+                let sentAt = value?["postTime"] as? TimeInterval ?? 0.0
+                self.sentAtLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: sentAt))
+                
+                let viewedAt = value?["viewTime"] as? TimeInterval ?? 0.0
+                self.viewedAtLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: viewedAt))
 
                 let imageId = value?["imageId"] as? String ?? "Error"
                 // Create a reference to the file you want to download
@@ -64,6 +75,21 @@ class PostViewController: UIViewController {
                 self.imageView.image = strongPost.image
             }
             self.fromUsernameLabel.text = strongPost.fromUsername
+            
+            self.ref.child("posts").child(strongPost.postId).child("viewTime").observeSingleEvent(of: DataEventType.value) { (snapshot) in
+                let viewTime = snapshot.value as! TimeInterval
+                if viewTime < 0 {
+                    self.ref.child("posts").child(strongPost.postId).child("viewTime").setValue(NSDate().timeIntervalSince1970)
+                }
+            }
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "h:mm a MMM dd, yyyy"
+            
+            self.sentAtLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: strongPost.postTime))
+            
+            self.viewedAtLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: strongPost.viewTime))
+            
         }
     }
     

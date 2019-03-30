@@ -18,14 +18,20 @@ class Post: NSObject, MKAnnotation, NSCoding {
         static let latKey = "latKey"
         static let longKey = "longKey"
         static let lockedKey = "lockedKey"
+        static let postTimeKey = "postTimeKey"
+        static let viewTimeKey = "viewTimeKey"
+        static let postIdKey = "postIdKey"
     }
     
+    var postId: String
     var toUsername: String
     var fromUsername: String
     var image: UIImage
     var coordinate: CLLocationCoordinate2D
     var locked: Bool
     var distance: Int = -1
+    var postTime: TimeInterval
+    var viewTime: TimeInterval
     
     var title: String? {
         return fromUsername + "'s post"
@@ -33,19 +39,23 @@ class Post: NSObject, MKAnnotation, NSCoding {
     
     var subtitle: String? = "Calculating distance..."
     
-    init(toUsername: String, fromUsername: String, image: UIImage, coordinate: CLLocationCoordinate2D, locked: Bool) {
+    init(postId: String, toUsername: String, fromUsername: String, image: UIImage, coordinate: CLLocationCoordinate2D, locked: Bool, postTime: TimeInterval, viewTime: TimeInterval) {
+        self.postId = postId
         self.toUsername = toUsername
         self.fromUsername = fromUsername
         self.image = image
         self.coordinate = coordinate
         self.locked = locked
         
+        self.postTime = postTime
+        self.viewTime = viewTime
+        
         super.init()
     }
     
-    convenience init(toUsername: String, fromUsername: String, image: UIImage, coordinate: CLLocationCoordinate2D) {
-        self.init(toUsername: toUsername, fromUsername: fromUsername, image: image, coordinate: coordinate, locked: true)
-    }
+//    convenience init(toUsername: String, fromUsername: String, image: UIImage, coordinate: CLLocationCoordinate2D) {
+//        self.init(toUsername: toUsername, fromUsername: fromUsername, image: image, coordinate: coordinate, locked: true)
+//    }
 
 //    convenience init?(toUsername: String, fromUsername: String, image: UIImage, coordinate: CLLocationCoordinate2D) {
 //        guard let imageData = image.jpegData(compressionQuality: 1) else {
@@ -61,6 +71,9 @@ class Post: NSObject, MKAnnotation, NSCoding {
         aCoder.encode(coordinate.latitude as Double, forKey: PostKeys.latKey)
         aCoder.encode(coordinate.longitude as Double, forKey: PostKeys.longKey)
         aCoder.encode(locked, forKey: PostKeys.lockedKey)
+        aCoder.encode(postTime, forKey: PostKeys.postTimeKey)
+        aCoder.encode(viewTime, forKey: PostKeys.viewTimeKey)
+        aCoder.encode(postId, forKey: PostKeys.postIdKey)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -77,6 +90,12 @@ class Post: NSObject, MKAnnotation, NSCoding {
         self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
         
         self.locked = aDecoder.decodeBool(forKey: PostKeys.lockedKey)
+        
+        self.postTime = aDecoder.decodeDouble(forKey: PostKeys.postTimeKey)
+        self.viewTime = aDecoder.decodeDouble(forKey: PostKeys.viewTimeKey)
+        
+        self.postId = aDecoder.decodeObject(forKey: PostKeys.postIdKey) as! String
+
     }
     
 }
