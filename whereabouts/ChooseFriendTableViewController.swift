@@ -99,12 +99,21 @@ class ChooseFriendTableViewController: UITableViewController {
             
             let postId = UUID().uuidString
             
+            guard let userLocation = LocationManager.shared.userLocation?.coordinate else {
+                let alert = UIAlertController(title: "Location hasn't been calculated", message: "Please try again in a minute", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("The \"OK\" alert occured.")
+                }))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
             self.ref.child("posts").child(postId).setValue([
                 "toUsername": usernameOfFriendToSendPostTo,
                 "fromUsername": currentUsername,
                 "imageId": imageId,
-                "latitude": 4.6,
-                "longitude": -12.666663
+                "latitude": userLocation.latitude,
+                "longitude": userLocation.longitude
                 ])
 
             self.ref.child("users").child(usernameOfFriendToSendPostTo).child("postsFromFriends").child(postId).setValue(true)
@@ -112,11 +121,11 @@ class ChooseFriendTableViewController: UITableViewController {
             
             // You can also access to download URL after upload.
             imageRef.downloadURL { (url, error) in
-                guard let url = url else {
-                    print("There was an error: ", error!.localizedDescription)
-                    return
-                }
-                print("image url is", url.absoluteString)
+//                guard let url = url else {
+//                    print("There was an error: ", error!.localizedDescription)
+//                    return
+//                }
+//                print("image url is", url.absoluteString)
             }
             
             // Dismiss loading icon

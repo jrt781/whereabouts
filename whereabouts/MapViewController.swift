@@ -63,6 +63,10 @@ class MapViewController: UIViewController, LocationObserver {
     }
     */
     
+    // TODO store posts in model?????
+    // TODO appropriately tell users that they can't open image of locked posts
+    // TODO get posts from friends even when app is closed
+    
     func onLocationUpdate(userLocation: CLLocation) {
         var selectedAnnotation: Post?
         if mapView.selectedAnnotations.count > 0 {
@@ -93,43 +97,32 @@ class MapViewController: UIViewController, LocationObserver {
             }
         }
     }
+    
+    var selectedPost : Post?
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "viewPostFromMap") {
+            guard let selectedPost = selectedPost else {
+                return
+            }
+            let destinationVC = segue.destination as! PostViewController
+            destinationVC.post = selectedPost
+        }
+    }
 
 }
 
 
-
-
-
 extension MapViewController: MKMapViewDelegate {
-    // 1
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        // 2
-//        guard let annotation = annotation as? Post else { return nil }
-//        // 3
-//        let identifier = "marker"
-//        var view: MKMarkerAnnotationView
-//        // 4
-//        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-//            as? MKMarkerAnnotationView {
-//            dequeuedView.annotation = annotation
-//            view = dequeuedView
-//        } else {
-//            // 5
-//            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-//            view.canShowCallout = true
-//            view.calloutOffset = CGPoint(x: -5, y: 5)
-//            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-//        }
-//        return view
-//    }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
         let post = view.annotation as! Post
-        print("user tapped the callout button for", post.fromUsername)
-        guard let userLocation = LocationManager.shared.userLocation else {return}
-        let distance = userLocation.distance(from: CLLocation(latitude: post.coordinate.latitude, longitude: post.coordinate.longitude))
-        print("This post is", distance, "meters away. It is", post.locked ? "locked" : "unlocked", "and its image is", view.image ?? "idk")
+        if !post.locked {
+            self.selectedPost = post
+            self.performSegue(withIdentifier: "viewPostFromMap", sender: self)
+        }
         
     }
+    
 }
