@@ -26,6 +26,7 @@
 		D1F48E632238596400614C9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1F48E612238596400614C9E /* LaunchScreen.storyboard */; };
 		D1F48E6E2238596400614C9E /* whereaboutsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F48E6D2238596400614C9E /* whereaboutsTests.swift */; };
 		D1F48E792238599300614C9E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1F48E782238599300614C9E /* GoogleService-Info.plist */; };
+		D1FE059C224EFE45004A0294 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE059B224EFE45004A0294 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		D1F48E6D2238596400614C9E /* whereaboutsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whereaboutsTests.swift; sourceTree = "<group>"; };
 		D1F48E6F2238596400614C9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1F48E782238599300614C9E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D1FE059B224EFE45004A0294 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				D1F48E5C2238596300614C9E /* Main.storyboard */,
 				D11F0E772242E46100657271 /* LoginViewController.swift */,
 				D11F0E7B2242F54500657271 /* SignUpViewController.swift */,
+				D1FE059B224EFE45004A0294 /* MapViewController.swift */,
 				D1F48E582238596300614C9E /* CameraViewController.swift */,
 				D1816DFA224712DD00E6A475 /* ChooseFriendTableViewController.swift */,
 				D1816DFC2247240B00E6A475 /* PostsTableViewController.swift */,
@@ -349,6 +352,7 @@
 				D11F0E7C2242F54500657271 /* SignUpViewController.swift in Sources */,
 				D11F0E7A2242E51B00657271 /* Switcher.swift in Sources */,
 				D1816DF92247047200E6A475 /* FriendsTableViewController.swift in Sources */,
+				D1FE059C224EFE45004A0294 /* MapViewController.swift in Sources */,
 				D1F48E572238596300614C9E /* AppDelegate.swift in Sources */,
 				D1B05F6D224435F900153D7D /* ProfileViewController.swift in Sources */,
 				D11F0E782242E46100657271 /* LoginViewController.swift in Sources */,

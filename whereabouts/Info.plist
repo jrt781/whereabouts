@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This application needs your location to make posts for friends.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This application needs your location to make posts for friends.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This application needs to use the camera of this device to share photos with others.</string>
 	<key>CFBundleDevelopmentRegion</key>
