@@ -46,6 +46,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             textField.resignFirstResponder()
             
             if textField == confirmTextField {
+                guard let confirmTextField = confirmTextField else {
+                    return false
+                }
                 signUp(confirmTextField)
             }
         }

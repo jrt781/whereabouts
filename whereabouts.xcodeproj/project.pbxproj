@@ -214,9 +214,11 @@
 				TargetAttributes = {
 					D1F48E522238596300614C9E = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					D1F48E682238596400614C9E = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = D1F48E522238596300614C9E;
 					};
 				};
@@ -524,7 +526,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jrt781.whereabouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -543,7 +545,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jrt781.whereabouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -564,7 +566,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jrt781.whereaboutsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/whereabouts.app/whereabouts";
 			};
@@ -586,7 +588,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jrt781.whereaboutsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/whereabouts.app/whereabouts";
 			};

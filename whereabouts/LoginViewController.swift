@@ -43,6 +43,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             textField.resignFirstResponder()
             
             if textField == passwordTextField {
+                guard let passwordTextField = passwordTextField else {
+                    return false
+                }
                 btnActionLogIn(passwordTextField)
             }
         }
