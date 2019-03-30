@@ -17,30 +17,35 @@ class Post: NSObject, MKAnnotation, NSCoding {
         static let imageKey = "imageKey"
         static let latKey = "latKey"
         static let longKey = "longKey"
+        static let lockedKey = "lockedKey"
     }
     
-    let toUsername: String
-    let fromUsername: String
-    let image: UIImage
-    let coordinate: CLLocationCoordinate2D
+    var toUsername: String
+    var fromUsername: String
+    var image: UIImage
+    var coordinate: CLLocationCoordinate2D
+    var locked: Bool
     
     var title: String? {
-        return toUsername + "'s post"
+        return fromUsername + "'s post"
     }
     
-    var subtitle: String? {
-        return ""
-    }
+    var subtitle: String? = ""
     
-    init(toUsername: String, fromUsername: String, image: UIImage, coordinate: CLLocationCoordinate2D) {
+    init(toUsername: String, fromUsername: String, image: UIImage, coordinate: CLLocationCoordinate2D, locked: Bool) {
         self.toUsername = toUsername
         self.fromUsername = fromUsername
         self.image = image
         self.coordinate = coordinate
+        self.locked = locked
         
         super.init()
     }
     
+    convenience init(toUsername: String, fromUsername: String, image: UIImage, coordinate: CLLocationCoordinate2D) {
+        self.init(toUsername: toUsername, fromUsername: fromUsername, image: image, coordinate: coordinate, locked: true)
+    }
+
 //    convenience init?(toUsername: String, fromUsername: String, image: UIImage, coordinate: CLLocationCoordinate2D) {
 //        guard let imageData = image.jpegData(compressionQuality: 1) else {
 //            return nil
@@ -54,6 +59,7 @@ class Post: NSObject, MKAnnotation, NSCoding {
         aCoder.encode(image.jpegData(compressionQuality: 1), forKey: PostKeys.imageKey)
         aCoder.encode(coordinate.latitude as Double, forKey: PostKeys.latKey)
         aCoder.encode(coordinate.longitude as Double, forKey: PostKeys.longKey)
+        aCoder.encode(locked, forKey: PostKeys.lockedKey)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,6 +74,8 @@ class Post: NSObject, MKAnnotation, NSCoding {
         let lat = aDecoder.decodeDouble(forKey: PostKeys.latKey)
         let long = aDecoder.decodeDouble(forKey: PostKeys.longKey)
         self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        
+        self.locked = aDecoder.decodeBool(forKey: PostKeys.lockedKey)
     }
     
 }

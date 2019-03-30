@@ -13,10 +13,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
     var needsToCenter = false
+    var posts: [Post] = []
 
     @IBOutlet weak var mapView: MKMapView!
     
-    let regionRadius: CLLocationDistance = 1000 // 1000 meters
+    let regionRadius: CLLocationDistance = 100 // 100 meters
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
 
@@ -46,20 +47,34 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.needsToCenter = true;
         mapView.showsUserLocation = true
         
-        let post = Post(toUsername: "myFriend", fromUsername: "jrtyler", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 40.248044, longitude: -111.649270))
+        let post = Post(toUsername: "jrtyler", fromUsername: "myFriend", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 37.787392, longitude: -122.408189))
+        
         mapView.addAnnotation(post)
+        posts.append(post)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        self.userLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         if self.needsToCenter {
             let initialLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
             centerMapOnLocation(location: initialLocation)
             self.needsToCenter = false;
         }
+        for post in self.posts {
+            let postCoordinate = CLLocation(latitude: post.coordinate.latitude, longitude: post.coordinate.longitude)
+            let distance = postCoordinate.distance(from: CLLocation(latitude: locValue.latitude, longitude: locValue.longitude))
+            post.subtitle = "\(Int(distance)) meters away"
+            if distance < 15 {
+                post.locked = false
+            }
+            mapView.removeAnnotation(post)
+            mapView.addAnnotation(post)
+        }
     }
     
+    var userLocation: CLLocation?
 
     /*
     // MARK: - Navigation
@@ -104,5 +119,9 @@ extension MapViewController: MKMapViewDelegate {
                  calloutAccessoryControlTapped control: UIControl) {
         let post = view.annotation as! Post
         print("user tapped the callout button for", post.fromUsername)
+        guard let userLocation = userLocation else {return}
+        let distance = userLocation.distance(from: CLLocation(latitude: post.coordinate.latitude, longitude: post.coordinate.longitude))
+        print("This post is", distance, "meters away. It is", post.locked ? "locked" : "unlocked", "and its image is", view.image ?? "idk")
+        
     }
 }

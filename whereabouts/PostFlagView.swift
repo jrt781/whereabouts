@@ -19,12 +19,15 @@ class PostFlagView: MKAnnotationView {
             
             // Custom callout button:
             let mapsButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
-            mapsButton.setBackgroundImage(UIImage(named: "lock.png"), for: UIControl.State())
+            mapsButton.setBackgroundImage(UIImage(named: "locked.png"), for: UIControl.State())
             rightCalloutAccessoryView = mapsButton
             // End custom callout button
             
-            image = UIImage(named: "lock.png")
-            
+            if post.locked {
+                image = UIImage(named: "locked.png")
+            } else {
+                image = UIImage(named: "unlocked.png")
+            }
         }
     }
 }

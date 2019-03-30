@@ -21,7 +21,13 @@ class PostMarkerView: MKMarkerAnnotationView {
 //            markerTintColor = artwork.markerTintColor
 //            glyphText = String(artwork.discipline.first!)
 //            glyphText = "P"
-            glyphImage = UIImage(named: "lock.png")
+            
+            if post.locked {
+                glyphImage = UIImage(named: "locked.png")
+            } else {
+                glyphImage = UIImage(named: "unlocked.png")
+            }
+            
         }
     }
 }

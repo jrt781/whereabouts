@@ -31,7 +31,8 @@
 		D1FE05A0224F13B2004A0294 /* img_lights.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D1FE059F224F13B2004A0294 /* img_lights.jpg */; };
 		D1FE05A2224F1B94004A0294 /* PostMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE05A1224F1B94004A0294 /* PostMarkerView.swift */; };
 		D1FE05AE224F31E0004A0294 /* PostFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE05AD224F31E0004A0294 /* PostFlagView.swift */; };
-		D1FE05B0224F356D004A0294 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = D1FE05AF224F356D004A0294 /* lock.png */; };
+		D1FE05B2224F3B57004A0294 /* unlocked.png in Resources */ = {isa = PBXBuildFile; fileRef = D1FE05B1224F3B57004A0294 /* unlocked.png */; };
+		D1FE05B4224F3CF7004A0294 /* locked.png in Resources */ = {isa = PBXBuildFile; fileRef = D1FE05B3224F3CF7004A0294 /* locked.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +78,8 @@
 		D1FE059F224F13B2004A0294 /* img_lights.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = img_lights.jpg; path = ../../../../Desktop/img_lights.jpg; sourceTree = "<group>"; };
 		D1FE05A1224F1B94004A0294 /* PostMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMarkerView.swift; sourceTree = "<group>"; };
 		D1FE05AD224F31E0004A0294 /* PostFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFlagView.swift; sourceTree = "<group>"; };
-		D1FE05AF224F356D004A0294 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = ../../../../Downloads/lock.png; sourceTree = "<group>"; };
+		D1FE05B1224F3B57004A0294 /* unlocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unlocked.png; sourceTree = "<group>"; };
+		D1FE05B3224F3CF7004A0294 /* locked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locked.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +151,8 @@
 				D1816DF82247047200E6A475 /* FriendsTableViewController.swift */,
 				D1FE059D224F081D004A0294 /* Post.swift */,
 				D1F48E5F2238596400614C9E /* Assets.xcassets */,
-				D1FE05AF224F356D004A0294 /* lock.png */,
+				D1FE05B3224F3CF7004A0294 /* locked.png */,
+				D1FE05B1224F3B57004A0294 /* unlocked.png */,
 				D1F48E612238596400614C9E /* LaunchScreen.storyboard */,
 				D1F48E642238596400614C9E /* Info.plist */,
 				D1F48E782238599300614C9E /* GoogleService-Info.plist */,
@@ -267,10 +270,11 @@
 			files = (
 				D1F48E632238596400614C9E /* LaunchScreen.storyboard in Resources */,
 				D1F48E792238599300614C9E /* GoogleService-Info.plist in Resources */,
-				D1FE05B0224F356D004A0294 /* lock.png in Resources */,
+				D1FE05B2224F3B57004A0294 /* unlocked.png in Resources */,
 				D1F48E602238596400614C9E /* Assets.xcassets in Resources */,
 				D1F48E5E2238596300614C9E /* Main.storyboard in Resources */,
 				D1FE05A0224F13B2004A0294 /* img_lights.jpg in Resources */,
+				D1FE05B4224F3CF7004A0294 /* locked.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
