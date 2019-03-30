@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, LocationObserver {
 
     let locationManager = CLLocationManager()
     var needsToCenter = false
@@ -32,17 +32,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         //PostFlagView -- only an image
         //PostMarkerView -- wrapped in a built-in pin
         
-        // Ask for Authorisation from the User.
-        self.locationManager.requestAlwaysAuthorization()
-        
-        // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
+        LocationManager.shared.addLocationObserver(observer: self)
         
         self.needsToCenter = true;
         mapView.showsUserLocation = true
@@ -51,31 +41,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         mapView.addAnnotation(post)
         posts.append(post)
+        
+        let post2 = Post(toUsername: "jrtyler", fromUsername: "myFriend2", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 40.247007, longitude: -111.648264))
+        
+        mapView.addAnnotation(post2)
+        posts.append(post2)
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        self.userLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        if self.needsToCenter {
-            let initialLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-            centerMapOnLocation(location: initialLocation)
-            self.needsToCenter = false;
-        }
-        for post in self.posts {
-            let postCoordinate = CLLocation(latitude: post.coordinate.latitude, longitude: post.coordinate.longitude)
-            let distance = postCoordinate.distance(from: CLLocation(latitude: locValue.latitude, longitude: locValue.longitude))
-            post.subtitle = "\(Int(distance)) meters away"
-            if distance < 15 {
-                post.locked = false
-            }
-            mapView.removeAnnotation(post)
-            mapView.addAnnotation(post)
-        }
-    }
-    
-    var userLocation: CLLocation?
-
     /*
     // MARK: - Navigation
 
@@ -85,6 +57,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func onLocationUpdate(userLocation: CLLocation) {
+        for post in self.posts {
+            if post.locked {
+                let postCoordinate = CLLocation(latitude: post.coordinate.latitude, longitude: post.coordinate.longitude)
+                let distance = postCoordinate.distance(from: userLocation)
+                post.subtitle = "\(Int(distance)) meters away"
+                if distance < 15 {
+                    post.locked = false
+                    mapView.removeAnnotation(post)
+                    mapView.addAnnotation(post)
+                    mapView.selectAnnotation(post, animated: true)
+                }
+            }
+        }
+    }
 
 }
 
@@ -119,7 +107,7 @@ extension MapViewController: MKMapViewDelegate {
                  calloutAccessoryControlTapped control: UIControl) {
         let post = view.annotation as! Post
         print("user tapped the callout button for", post.fromUsername)
-        guard let userLocation = userLocation else {return}
+        guard let userLocation = LocationManager.shared.userLocation else {return}
         let distance = userLocation.distance(from: CLLocation(latitude: post.coordinate.latitude, longitude: post.coordinate.longitude))
         print("This post is", distance, "meters away. It is", post.locked ? "locked" : "unlocked", "and its image is", view.image ?? "idk")
         

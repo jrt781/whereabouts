@@ -23,9 +23,9 @@ class PostMarkerView: MKMarkerAnnotationView {
 //            glyphText = "P"
             
             if post.locked {
-                glyphImage = UIImage(named: "locked.png")
+                glyphImage = UIImage(named: Constants.LOCKED_POST_IMAGE)
             } else {
-                glyphImage = UIImage(named: "unlocked.png")
+                glyphImage = UIImage(named: Constants.UNLOCKED_POST_IMAGE)
             }
             
         }

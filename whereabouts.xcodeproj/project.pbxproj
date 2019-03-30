@@ -33,6 +33,8 @@
 		D1FE05AE224F31E0004A0294 /* PostFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE05AD224F31E0004A0294 /* PostFlagView.swift */; };
 		D1FE05B2224F3B57004A0294 /* unlocked.png in Resources */ = {isa = PBXBuildFile; fileRef = D1FE05B1224F3B57004A0294 /* unlocked.png */; };
 		D1FE05B4224F3CF7004A0294 /* locked.png in Resources */ = {isa = PBXBuildFile; fileRef = D1FE05B3224F3CF7004A0294 /* locked.png */; };
+		D1FE05B6224F524F004A0294 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE05B5224F524F004A0294 /* LocationManager.swift */; };
+		D1FE05B8224F5747004A0294 /* LocationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE05B7224F5747004A0294 /* LocationObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		D1FE05AD224F31E0004A0294 /* PostFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFlagView.swift; sourceTree = "<group>"; };
 		D1FE05B1224F3B57004A0294 /* unlocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unlocked.png; sourceTree = "<group>"; };
 		D1FE05B3224F3CF7004A0294 /* locked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locked.png; sourceTree = "<group>"; };
+		D1FE05B5224F524F004A0294 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		D1FE05B7224F5747004A0294 /* LocationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 		D1F48E552238596300614C9E /* whereabouts */ = {
 			isa = PBXGroup;
 			children = (
+				D1FE05BC224F576A004A0294 /* location */,
 				D1F48E562238596300614C9E /* AppDelegate.swift */,
 				D1F48E5C2238596300614C9E /* Main.storyboard */,
 				D11F0E772242E46100657271 /* LoginViewController.swift */,
@@ -171,6 +176,15 @@
 				D1F48E6F2238596400614C9E /* Info.plist */,
 			);
 			path = whereaboutsTests;
+			sourceTree = "<group>";
+		};
+		D1FE05BC224F576A004A0294 /* location */ = {
+			isa = PBXGroup;
+			children = (
+				D1FE05B5224F524F004A0294 /* LocationManager.swift */,
+				D1FE05B7224F5747004A0294 /* LocationObserver.swift */,
+			);
+			path = location;
 			sourceTree = "<group>";
 		};
 		EDC4609A277745190A1171E0 /* Frameworks */ = {
@@ -367,7 +381,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1FE05B8224F5747004A0294 /* LocationObserver.swift in Sources */,
 				D1816DFF2247289100E6A475 /* PostViewController.swift in Sources */,
+				D1FE05B6224F524F004A0294 /* LocationManager.swift in Sources */,
 				D1816DFB224712DD00E6A475 /* ChooseFriendTableViewController.swift in Sources */,
 				D1816DF72246FE9F00E6A475 /* Util.swift in Sources */,
 				D11F0E7C2242F54500657271 /* SignUpViewController.swift in Sources */,

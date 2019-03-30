@@ -102,7 +102,9 @@ class ChooseFriendTableViewController: UITableViewController {
             self.ref.child("posts").child(postId).setValue([
                 "toUsername": usernameOfFriendToSendPostTo,
                 "fromUsername": currentUsername,
-                "imageId": imageId
+                "imageId": imageId,
+                "latitude": 4.6,
+                "longitude": -12.666663
                 ])
 
             self.ref.child("users").child(usernameOfFriendToSendPostTo).child("postsFromFriends").child(postId).setValue(true)
