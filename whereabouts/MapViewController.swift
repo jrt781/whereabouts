@@ -33,6 +33,11 @@ class MapViewController: UIViewController, LocationObserver {
         //PostMarkerView -- wrapped in a built-in pin
         
         LocationManager.shared.addLocationObserver(observer: self)
+        if let currentLocation = LocationManager.shared.userLocation {
+            centerMapOnLocation(location: currentLocation)
+            onLocationUpdate(userLocation: currentLocation)
+        }
+        
         
         self.needsToCenter = true;
         mapView.showsUserLocation = true
@@ -59,16 +64,31 @@ class MapViewController: UIViewController, LocationObserver {
     */
     
     func onLocationUpdate(userLocation: CLLocation) {
+        var selectedAnnotation: Post?
+        if mapView.selectedAnnotations.count > 0 {
+            selectedAnnotation = mapView.selectedAnnotations[0] as? Post
+        }
         for post in self.posts {
+            // Unlocked posts don't need to be updated with position
             if post.locked {
-                let postCoordinate = CLLocation(latitude: post.coordinate.latitude, longitude: post.coordinate.longitude)
-                let distance = postCoordinate.distance(from: userLocation)
-                post.subtitle = "\(Int(distance)) meters away"
+                
+                // Generate distance data
+                let oldDistance = post.distance
+                let distance = Int(userLocation.distance(from: CLLocation(latitude: post.coordinate.latitude, longitude: post.coordinate.longitude)))
+                
+                // Check if the distance is within the unlocked region
                 if distance < 15 {
                     post.locked = false
+                }
+                
+                // If the distance has changed, update the markers
+                if oldDistance != distance {
+                    post.subtitle = post.locked ? "\(distance) meters away" : "Unlocked!"
                     mapView.removeAnnotation(post)
                     mapView.addAnnotation(post)
-                    mapView.selectAnnotation(post, animated: true)
+                    if post == selectedAnnotation {
+                        mapView.selectAnnotation(post, animated: false)
+                    }
                 }
             }
         }

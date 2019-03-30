@@ -25,12 +25,13 @@ class Post: NSObject, MKAnnotation, NSCoding {
     var image: UIImage
     var coordinate: CLLocationCoordinate2D
     var locked: Bool
+    var distance: Int = -1
     
     var title: String? {
         return fromUsername + "'s post"
     }
     
-    var subtitle: String? = ""
+    var subtitle: String? = "Calculating distance..."
     
     init(toUsername: String, fromUsername: String, image: UIImage, coordinate: CLLocationCoordinate2D, locked: Bool) {
         self.toUsername = toUsername
