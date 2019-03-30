@@ -26,6 +26,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
+        mapView.register(PostMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+
         
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()
@@ -41,6 +44,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         self.needsToCenter = true;
         mapView.showsUserLocation = true
+        
+        let post = Post(toUsername: "myFriend", fromUsername: "jrtyler", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 40.248044, longitude: -111.649270))
+        mapView.addAnnotation(post)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -64,4 +70,38 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     */
 
+}
+
+
+
+
+
+extension MapViewController: MKMapViewDelegate {
+    // 1
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        // 2
+//        guard let annotation = annotation as? Post else { return nil }
+//        // 3
+//        let identifier = "marker"
+//        var view: MKMarkerAnnotationView
+//        // 4
+//        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+//            as? MKMarkerAnnotationView {
+//            dequeuedView.annotation = annotation
+//            view = dequeuedView
+//        } else {
+//            // 5
+//            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//            view.canShowCallout = true
+//            view.calloutOffset = CGPoint(x: -5, y: 5)
+//            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+//        }
+//        return view
+//    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
+                 calloutAccessoryControlTapped control: UIControl) {
+        let post = view.annotation as! Post
+        print("user tapped the callout button for", post.fromUsername)
+    }
 }
