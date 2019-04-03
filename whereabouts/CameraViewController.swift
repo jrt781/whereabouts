@@ -85,6 +85,20 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         }
     }
     
+    // TODO customize "take photo" button
+    
+    // TODO change camera state once pic is taken:
+        // TODO hide preview
+        // TODO hide "take photo" button
+        // TODO show "retake" button
+        // TODO show "send to friends" button
+    
+    // TODO Let the user retake photo
+        // TODO reshow preview
+        // TODO reshow "take photo" button
+        // TODO hide "send to friends" button
+        // TODO hide "retake" button
+    
     @IBAction func didTakePhoto(_ sender: Any) {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
         stillImageOutput.capturePhoto(with: settings, delegate: self)

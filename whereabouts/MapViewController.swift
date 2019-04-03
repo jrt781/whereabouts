@@ -51,6 +51,8 @@ class MapViewController: UIViewController, LocationObserver {
         self.needsToCenter = true;
         mapView.showsUserLocation = true
         
+        // TODO improve map marker instructions so new people aren't confused
+        
 //        let post = Post(postId: "12", toUsername: "jrtyler", fromUsername: "myFriend", image: UIImage(imageLiteralResourceName: "img_lights.jpg"), coordinate: CLLocationCoordinate2D(latitude: 37.787392, longitude: -122.408189), locked: false, postTime: 1553962641.8981, viewTime: 1553969842.477964)
 //
 //        mapView.addAnnotation(post)
