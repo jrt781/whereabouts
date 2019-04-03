@@ -18,33 +18,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4P-LN-qE4">
-                                <rect key="frame" x="149.5" y="543.5" width="76" height="30"/>
-                                <state key="normal" title="Take Photo"/>
-                                <connections>
-                                    <action selector="takePhoto:" destination="9pv-A4-QxB" eventType="touchUpInside" id="T7c-fu-cN4"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ZO-05-Kft">
-                                <rect key="frame" x="37.5" y="133.5" width="300" height="400"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vDb-Ub-P2v">
+                                <rect key="frame" x="37.5" y="64" width="300" height="400"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="3ZO-05-Kft" secondAttribute="height" multiplier="3:4" id="993-KY-t6T"/>
-                                    <constraint firstAttribute="width" constant="300" id="lUO-8h-bak"/>
+                                    <constraint firstAttribute="width" constant="300" id="GlY-Ih-rv8"/>
+                                    <constraint firstAttribute="width" secondItem="vDb-Ub-P2v" secondAttribute="height" multiplier="3:4" id="ipk-ud-Rcx"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rmq-NK-lda">
+                                <rect key="frame" x="246.5" y="468" width="112.5" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="16E-Ij-20n"/>
+                                    <constraint firstAttribute="width" secondItem="rmq-NK-lda" secondAttribute="height" multiplier="3:4" id="zkT-Ca-eU7"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncg-JA-eq4">
+                                <rect key="frame" x="16" y="528" width="76" height="30"/>
+                                <state key="normal" title="Take Photo"/>
+                                <connections>
+                                    <action selector="didTakePhoto:" destination="9pv-A4-QxB" eventType="touchUpInside" id="deq-pQ-gXn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1A2-6a-NpE">
+                                <rect key="frame" x="16" y="566" width="152" height="30"/>
+                                <state key="normal" title="Send Photo to Friends"/>
+                                <connections>
+                                    <action selector="sendPhotoToFriends:" destination="9pv-A4-QxB" eventType="touchUpInside" id="rDl-X7-O3I"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="b4P-LN-qE4" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="CJp-MM-Yuc"/>
-                            <constraint firstItem="3ZO-05-Kft" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Si6-08-5v5"/>
-                            <constraint firstItem="3ZO-05-Kft" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="cqT-sB-s4q"/>
-                            <constraint firstItem="b4P-LN-qE4" firstAttribute="top" secondItem="3ZO-05-Kft" secondAttribute="bottom" constant="10" id="yOP-1C-HCp"/>
+                            <constraint firstItem="vDb-Ub-P2v" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="2WG-Ex-G8m"/>
+                            <constraint firstItem="Ncg-JA-eq4" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="Et0-6Z-SrB"/>
+                            <constraint firstItem="rmq-NK-lda" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="OZx-4V-FGA"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="rmq-NK-lda" secondAttribute="trailing" constant="16" id="Ptv-dh-bDF"/>
+                            <constraint firstItem="1A2-6a-NpE" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="ZUR-O0-moj"/>
+                            <constraint firstItem="rmq-NK-lda" firstAttribute="centerY" secondItem="Ncg-JA-eq4" secondAttribute="centerY" id="dIa-LU-Kag"/>
+                            <constraint firstItem="1A2-6a-NpE" firstAttribute="top" secondItem="Ncg-JA-eq4" secondAttribute="bottom" constant="8" id="dwh-Kn-dOg"/>
+                            <constraint firstItem="vDb-Ub-P2v" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="jFz-Sf-6Iz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" id="mAG-f7-Aw6"/>
                     <connections>
-                        <outlet property="imageView" destination="3ZO-05-Kft" id="2Pp-qa-C8C"/>
+                        <outlet property="captureImageView" destination="rmq-NK-lda" id="Ryg-tc-RbU"/>
+                        <outlet property="previewView" destination="vDb-Ub-P2v" id="C7U-XM-yPQ"/>
                         <segue destination="idL-Vm-GIA" kind="show" identifier="chooseFriend" id="szS-gs-QnE"/>
                     </connections>
                 </viewController>
