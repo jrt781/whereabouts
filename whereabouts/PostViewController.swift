@@ -19,9 +19,9 @@ class PostViewController: UIViewController {
     var post : Post?
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var fromUsernameLabel: UILabel!
-    @IBOutlet weak var sentAtLabel: UILabel!
-    @IBOutlet weak var viewedAtLabel: UILabel!
+    @IBOutlet weak var fromUsernameTextView: UITextView!
+    @IBOutlet weak var sentAtTextView: UITextView!
+    @IBOutlet weak var viewedAtTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,9 @@ class PostViewController: UIViewController {
         self.ref = Database.database().reference()
         self.storageRef = Storage.storage().reference()
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a MMM dd, yyyy"
+        
         if !postId.isEmpty {
             print("Getting data from firebase using the post id that was passed in:", postId)
             ref.child("posts").child(postId).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
@@ -37,17 +40,18 @@ class PostViewController: UIViewController {
                 let value = snapshot.value as? NSDictionary
             
                 let fromUsername = value?["fromUsername"] as? String ?? "Error"
-                self.fromUsernameLabel.text = fromUsername
-                
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                
-                let sentAt = value?["postTime"] as? TimeInterval ?? 0.0
-                self.sentAtLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: sentAt))
-                
-                let viewedAt = value?["viewTime"] as? TimeInterval ?? 0.0
-                self.viewedAtLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: viewedAt))
+                self.fromUsernameTextView.text = fromUsername
 
+                let sentAt = value?["postTime"] as? TimeInterval ?? 0.0
+                self.sentAtTextView.text = dateFormatter.string(from: Date(timeIntervalSince1970: sentAt))
+                
+                var viewedAt = value?["viewTime"] as? TimeInterval ?? 0.0
+                if viewedAt < 1 {
+                    viewedAt = NSDate().timeIntervalSince1970
+                    self.ref.child("posts").child(self.postId).child("viewTime").setValue(viewedAt)
+                }
+                self.viewedAtTextView.text = dateFormatter.string(from: Date(timeIntervalSince1970: viewedAt))
+                
                 let imageId = value?["imageId"] as? String ?? "Error"
                 // Create a reference to the file you want to download
                 let imageRef = self.storageRef.child("images/\(imageId).jpg")
@@ -74,25 +78,34 @@ class PostViewController: UIViewController {
             } else {
                 self.imageView.image = strongPost.image
             }
-            self.fromUsernameLabel.text = strongPost.fromUsername
+            self.fromUsernameTextView.text = strongPost.fromUsername
             
-            self.ref.child("posts").child(strongPost.postId).child("viewTime").observeSingleEvent(of: DataEventType.value) { (snapshot) in
-                let viewTime = snapshot.value as! TimeInterval
-                if viewTime < 0 {
-                    self.ref.child("posts").child(strongPost.postId).child("viewTime").setValue(NSDate().timeIntervalSince1970)
+            // has the post been marked as viewed yet?
+            if strongPost.viewTime < 1 {
+                
+                // Get the time and store it
+                strongPost.viewTime = NSDate().timeIntervalSince1970
+                
+                // Check if the post *has* been viewed but we don't have the updated one
+                self.ref.child("posts").child(strongPost.postId).child("viewTime").observeSingleEvent(of: DataEventType.value) { (snapshot) in
+                    let viewTime = snapshot.value as! TimeInterval
+                    if viewTime < 1 {
+                        // The database needs to be updated with the time it was just viewed at
+                        self.ref.child("posts").child(strongPost.postId).child("viewTime").setValue(strongPost.viewTime)
+                    } else {
+                        // We don't have the updated time. Let's get it and update the view if needed
+                        strongPost.viewTime = viewTime
+                        self.viewedAtTextView.text = dateFormatter.string(from: Date(timeIntervalSince1970: strongPost.viewTime))
+                    }
                 }
             }
             
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "h:mm a MMM dd, yyyy"
+            self.sentAtTextView.text = dateFormatter.string(from: Date(timeIntervalSince1970: strongPost.postTime))
             
-            self.sentAtLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: strongPost.postTime))
-            
-            self.viewedAtLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: strongPost.viewTime))
+            self.viewedAtTextView.text = dateFormatter.string(from: Date(timeIntervalSince1970: strongPost.viewTime))
             
         }
     }
-    
 
     /*
     // MARK: - Navigation
