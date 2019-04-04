@@ -46,6 +46,9 @@ class Post: NSObject, MKAnnotation, NSCoding {
         self.image = image
         self.coordinate = coordinate
         self.locked = locked
+        if !self.locked {
+            subtitle = "Unlocked!"
+        }
         
         self.postTime = postTime
         self.viewTime = viewTime
@@ -90,6 +93,9 @@ class Post: NSObject, MKAnnotation, NSCoding {
         self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
         
         self.locked = aDecoder.decodeBool(forKey: PostKeys.lockedKey)
+        if !self.locked {
+            subtitle = "Unlocked!"
+        }
         
         self.postTime = aDecoder.decodeDouble(forKey: PostKeys.postTimeKey)
         self.viewTime = aDecoder.decodeDouble(forKey: PostKeys.viewTimeKey)
