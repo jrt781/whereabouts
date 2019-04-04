@@ -12,6 +12,7 @@
 		D11F0E782242E46100657271 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F0E772242E46100657271 /* LoginViewController.swift */; };
 		D11F0E7A2242E51B00657271 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F0E792242E51B00657271 /* Switcher.swift */; };
 		D11F0E7C2242F54500657271 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F0E7B2242F54500657271 /* SignUpViewController.swift */; };
+		D13D75062256642B00F16033 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D13D75052256642B00F16033 /* GoogleService-Info.plist */; };
 		D1816DF52246F13E00E6A475 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF42246F13E00E6A475 /* Constants.swift */; };
 		D1816DF72246FE9F00E6A475 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF62246FE9F00E6A475 /* Util.swift */; };
 		D1816DF92247047200E6A475 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF82247047200E6A475 /* FriendsTableViewController.swift */; };
@@ -25,7 +26,6 @@
 		D1F48E602238596400614C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1F48E5F2238596400614C9E /* Assets.xcassets */; };
 		D1F48E632238596400614C9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1F48E612238596400614C9E /* LaunchScreen.storyboard */; };
 		D1F48E6E2238596400614C9E /* whereaboutsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F48E6D2238596400614C9E /* whereaboutsTests.swift */; };
-		D1F48E792238599300614C9E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1F48E782238599300614C9E /* GoogleService-Info.plist */; };
 		D1FE059C224EFE45004A0294 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE059B224EFE45004A0294 /* MapViewController.swift */; };
 		D1FE059E224F081D004A0294 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE059D224F081D004A0294 /* Post.swift */; };
 		D1FE05A0224F13B2004A0294 /* img_lights.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D1FE059F224F13B2004A0294 /* img_lights.jpg */; };
@@ -57,6 +57,7 @@
 		D11F0E772242E46100657271 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D11F0E792242E51B00657271 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		D11F0E7B2242F54500657271 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D13D75052256642B00F16033 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D1816DF42246F13E00E6A475 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D1816DF62246FE9F00E6A475 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		D1816DF82247047200E6A475 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +75,6 @@
 		D1F48E692238596400614C9E /* whereaboutsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = whereaboutsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F48E6D2238596400614C9E /* whereaboutsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whereaboutsTests.swift; sourceTree = "<group>"; };
 		D1F48E6F2238596400614C9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D1F48E782238599300614C9E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D1FE059B224EFE45004A0294 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D1FE059D224F081D004A0294 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D1FE059F224F13B2004A0294 /* img_lights.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = img_lights.jpg; path = ../../../../Desktop/img_lights.jpg; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 				D1FE05B3224F3CF7004A0294 /* locked.png */,
 				D1FE05B1224F3B57004A0294 /* unlocked.png */,
 				D1F48E612238596400614C9E /* LaunchScreen.storyboard */,
+				D13D75052256642B00F16033 /* GoogleService-Info.plist */,
 				D1F48E642238596400614C9E /* Info.plist */,
-				D1F48E782238599300614C9E /* GoogleService-Info.plist */,
 				D1FE059F224F13B2004A0294 /* img_lights.jpg */,
 				D11F0E792242E51B00657271 /* Switcher.swift */,
 				D1816DF42246F13E00E6A475 /* Constants.swift */,
@@ -283,12 +283,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1F48E632238596400614C9E /* LaunchScreen.storyboard in Resources */,
-				D1F48E792238599300614C9E /* GoogleService-Info.plist in Resources */,
 				D1FE05B2224F3B57004A0294 /* unlocked.png in Resources */,
 				D1F48E602238596400614C9E /* Assets.xcassets in Resources */,
 				D1F48E5E2238596300614C9E /* Main.storyboard in Resources */,
 				D1FE05A0224F13B2004A0294 /* img_lights.jpg in Resources */,
 				D1FE05B4224F3CF7004A0294 /* locked.png in Resources */,
+				D13D75062256642B00F16033 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
