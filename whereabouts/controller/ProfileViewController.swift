@@ -80,6 +80,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UITableViewD
             return false
         }
         
+        if friendUsernames.contains(username) {
+            let alert = UIAlertController(title: "Nice try", message: "You're already friends with " + username + ".", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return false
+        }
+        
         self.ref.child("users").child(username).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
