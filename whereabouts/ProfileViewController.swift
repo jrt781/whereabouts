@@ -27,7 +27,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         findFriendsTextField.delegate = self
     }
     
-    @IBAction func logout(_ sender: Any) {
+    @IBAction func logoutPressed(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()

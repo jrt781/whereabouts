@@ -13,6 +13,7 @@
 		D11F0E7A2242E51B00657271 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F0E792242E51B00657271 /* Switcher.swift */; };
 		D11F0E7C2242F54500657271 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F0E7B2242F54500657271 /* SignUpViewController.swift */; };
 		D13D75062256642B00F16033 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D13D75052256642B00F16033 /* GoogleService-Info.plist */; };
+		D13D750822566ADE00F16033 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13D750722566ADE00F16033 /* MyTabBarController.swift */; };
 		D1816DF52246F13E00E6A475 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF42246F13E00E6A475 /* Constants.swift */; };
 		D1816DF72246FE9F00E6A475 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF62246FE9F00E6A475 /* Util.swift */; };
 		D1816DF92247047200E6A475 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF82247047200E6A475 /* FriendsTableViewController.swift */; };
@@ -58,6 +59,7 @@
 		D11F0E792242E51B00657271 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		D11F0E7B2242F54500657271 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D13D75052256642B00F16033 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D13D750722566ADE00F16033 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		D1816DF42246F13E00E6A475 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D1816DF62246FE9F00E6A475 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		D1816DF82247047200E6A475 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				D11F0E792242E51B00657271 /* Switcher.swift */,
 				D1816DF42246F13E00E6A475 /* Constants.swift */,
 				D1816DF62246FE9F00E6A475 /* Util.swift */,
+				D13D750722566ADE00F16033 /* MyTabBarController.swift */,
 			);
 			path = whereabouts;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1FE05B8224F5747004A0294 /* LocationObserver.swift in Sources */,
+				D13D750822566ADE00F16033 /* MyTabBarController.swift in Sources */,
 				D1816DFF2247289100E6A475 /* PostViewController.swift in Sources */,
 				D1FE05B6224F524F004A0294 /* LocationManager.swift in Sources */,
 				D1816DFB224712DD00E6A475 /* ChooseFriendTableViewController.swift in Sources */,
