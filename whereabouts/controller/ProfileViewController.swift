@@ -103,6 +103,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UITableViewD
             friendUsernames.append(snapshot.key)
             UserDefaults.standard.set(friendUsernames, forKey: Constants.FRIEND_USERNAMES)
             
+            self.getFriendsData()
+            self.friendsTableView.reloadData()
+            textField.text = ""
+            
         }) { (error) in
             print(error.localizedDescription)
         }
