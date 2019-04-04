@@ -16,6 +16,9 @@
 		D13D750822566ADE00F16033 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13D750722566ADE00F16033 /* MyTabBarController.swift */; };
 		D13D751622567B4500F16033 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = D13D751522567B4500F16033 /* forward.png */; };
 		D13D751F2256934B00F16033 /* camera-button.png in Resources */ = {isa = PBXBuildFile; fileRef = D13D751E2256934B00F16033 /* camera-button.png */; };
+		D13D753522569A2B00F16033 /* unlocked-map.png in Resources */ = {isa = PBXBuildFile; fileRef = D13D753422569A2B00F16033 /* unlocked-map.png */; };
+		D13D753722569ACA00F16033 /* locked-map.png in Resources */ = {isa = PBXBuildFile; fileRef = D13D753622569ACA00F16033 /* locked-map.png */; };
+		D13D753B22569B9400F16033 /* locked-detail.png in Resources */ = {isa = PBXBuildFile; fileRef = D13D753A22569B9400F16033 /* locked-detail.png */; };
 		D1816DF52246F13E00E6A475 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF42246F13E00E6A475 /* Constants.swift */; };
 		D1816DF72246FE9F00E6A475 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF62246FE9F00E6A475 /* Util.swift */; };
 		D1816DFB224712DD00E6A475 /* ChooseFriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DFA224712DD00E6A475 /* ChooseFriendTableViewController.swift */; };
@@ -33,7 +36,6 @@
 		D1FE05A2224F1B94004A0294 /* PostMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE05A1224F1B94004A0294 /* PostMarkerView.swift */; };
 		D1FE05AE224F31E0004A0294 /* PostFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE05AD224F31E0004A0294 /* PostFlagView.swift */; };
 		D1FE05B2224F3B57004A0294 /* unlocked.png in Resources */ = {isa = PBXBuildFile; fileRef = D1FE05B1224F3B57004A0294 /* unlocked.png */; };
-		D1FE05B4224F3CF7004A0294 /* locked.png in Resources */ = {isa = PBXBuildFile; fileRef = D1FE05B3224F3CF7004A0294 /* locked.png */; };
 		D1FE05B6224F524F004A0294 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE05B5224F524F004A0294 /* LocationManager.swift */; };
 		D1FE05B8224F5747004A0294 /* LocationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE05B7224F5747004A0294 /* LocationObserver.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +64,9 @@
 		D13D750722566ADE00F16033 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		D13D751522567B4500F16033 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forward.png; path = ../../../../Downloads/forward.png; sourceTree = "<group>"; };
 		D13D751E2256934B00F16033 /* camera-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-button.png"; sourceTree = "<group>"; };
+		D13D753422569A2B00F16033 /* unlocked-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "unlocked-map.png"; path = "../../../../Downloads/unlocked-map.png"; sourceTree = "<group>"; };
+		D13D753622569ACA00F16033 /* locked-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "locked-map.png"; path = "../../../../Downloads/locked-map.png"; sourceTree = "<group>"; };
+		D13D753A22569B9400F16033 /* locked-detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locked-detail.png"; sourceTree = "<group>"; };
 		D1816DF42246F13E00E6A475 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D1816DF62246FE9F00E6A475 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		D1816DFA224712DD00E6A475 /* ChooseFriendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFriendTableViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +88,6 @@
 		D1FE05A1224F1B94004A0294 /* PostMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMarkerView.swift; sourceTree = "<group>"; };
 		D1FE05AD224F31E0004A0294 /* PostFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFlagView.swift; sourceTree = "<group>"; };
 		D1FE05B1224F3B57004A0294 /* unlocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unlocked.png; sourceTree = "<group>"; };
-		D1FE05B3224F3CF7004A0294 /* locked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locked.png; sourceTree = "<group>"; };
 		D1FE05B5224F524F004A0294 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D1FE05B7224F5747004A0294 /* LocationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,7 +198,9 @@
 				D1F48E5F2238596400614C9E /* Assets.xcassets */,
 				D13D751E2256934B00F16033 /* camera-button.png */,
 				D13D751522567B4500F16033 /* forward.png */,
-				D1FE05B3224F3CF7004A0294 /* locked.png */,
+				D13D753622569ACA00F16033 /* locked-map.png */,
+				D13D753422569A2B00F16033 /* unlocked-map.png */,
+				D13D753A22569B9400F16033 /* locked-detail.png */,
 				D1FE05B1224F3B57004A0294 /* unlocked.png */,
 				D1F48E612238596400614C9E /* LaunchScreen.storyboard */,
 				D13D75052256642B00F16033 /* GoogleService-Info.plist */,
@@ -318,13 +324,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1F48E632238596400614C9E /* LaunchScreen.storyboard in Resources */,
+				D13D753B22569B9400F16033 /* locked-detail.png in Resources */,
 				D1FE05B2224F3B57004A0294 /* unlocked.png in Resources */,
 				D1F48E602238596400614C9E /* Assets.xcassets in Resources */,
+				D13D753722569ACA00F16033 /* locked-map.png in Resources */,
+				D13D753522569A2B00F16033 /* unlocked-map.png in Resources */,
 				D13D751622567B4500F16033 /* forward.png in Resources */,
 				D13D751F2256934B00F16033 /* camera-button.png in Resources */,
 				D1F48E5E2238596300614C9E /* Main.storyboard in Resources */,
 				D1FE05A0224F13B2004A0294 /* img_lights.jpg in Resources */,
-				D1FE05B4224F3CF7004A0294 /* locked.png in Resources */,
 				D13D75062256642B00F16033 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

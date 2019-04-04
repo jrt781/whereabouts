@@ -24,7 +24,7 @@ class PostFlagView: MKAnnotationView {
             
             if post.locked {
                 image = UIImage(named: Constants.LOCKED_POST_IMAGE)
-                mapsButton.setBackgroundImage(UIImage(named: Constants.LOCKED_POST_IMAGE), for: UIControl.State())
+                mapsButton.setBackgroundImage(UIImage(named: "locked-detail.png"), for: UIControl.State())
             } else {
                 image = UIImage(named: Constants.UNLOCKED_POST_IMAGE)
                 mapsButton.setBackgroundImage(UIImage(named: "forward.png"), for: UIControl.State())
