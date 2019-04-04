@@ -10,20 +10,32 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class ProfileViewController: UIViewController, UITextFieldDelegate {
+class ProfileViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
 
     fileprivate var ref: DatabaseReference!
 
     @IBOutlet weak var findFriendsTextField: UITextField!
+    @IBOutlet weak var friendsTableView: UITableView!
+    
+    var friendUsernames : [String] = []
+    
+    func getFriendsData() {
+        friendUsernames = UserDefaults.standard.array(forKey: Constants.FRIEND_USERNAMES) as? [String] ?? [String]()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
+        getFriendsData()
+        friendsTableView.delegate = self
+        friendsTableView.dataSource = self
+        friendsTableView.reloadData()
+        print("(ProfileViewController) The friends are", friendUsernames)
 
         // Create references to Firebase
         self.ref = Database.database().reference()
 
-        // Do this for each UITextField
         findFriendsTextField.delegate = self
     }
     
@@ -100,6 +112,24 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         
         // Do not add a line break
         return false
+    }
+    
+    // MARK: - Table view data source
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return friendUsernames.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = friendsTableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+        
+        cell.textLabel?.text = friendUsernames[indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("friend", friendUsernames[indexPath.row], "selected")
     }
 
 }

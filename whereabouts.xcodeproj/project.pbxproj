@@ -16,9 +16,7 @@
 		D13D750822566ADE00F16033 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13D750722566ADE00F16033 /* MyTabBarController.swift */; };
 		D1816DF52246F13E00E6A475 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF42246F13E00E6A475 /* Constants.swift */; };
 		D1816DF72246FE9F00E6A475 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF62246FE9F00E6A475 /* Util.swift */; };
-		D1816DF92247047200E6A475 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF82247047200E6A475 /* FriendsTableViewController.swift */; };
 		D1816DFB224712DD00E6A475 /* ChooseFriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DFA224712DD00E6A475 /* ChooseFriendTableViewController.swift */; };
-		D1816DFD2247240B00E6A475 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DFC2247240B00E6A475 /* PostsTableViewController.swift */; };
 		D1816DFF2247289100E6A475 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DFE2247289100E6A475 /* PostViewController.swift */; };
 		D1B05F6D224435F900153D7D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B05F6C224435F900153D7D /* ProfileViewController.swift */; };
 		D1F48E572238596300614C9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F48E562238596300614C9E /* AppDelegate.swift */; };
@@ -62,9 +60,7 @@
 		D13D750722566ADE00F16033 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		D1816DF42246F13E00E6A475 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D1816DF62246FE9F00E6A475 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		D1816DF82247047200E6A475 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D1816DFA224712DD00E6A475 /* ChooseFriendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFriendTableViewController.swift; sourceTree = "<group>"; };
-		D1816DFC2247240B00E6A475 /* PostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
 		D1816DFE2247289100E6A475 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		D1B05F6C224435F900153D7D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1F48E532238596300614C9E /* whereabouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whereabouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +115,48 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D13D75092256745D00F16033 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				D13D750722566ADE00F16033 /* MyTabBarController.swift */,
+				D1FE05A1224F1B94004A0294 /* PostMarkerView.swift */,
+				D1FE05AD224F31E0004A0294 /* PostFlagView.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		D13D750A2256746B00F16033 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				D11F0E792242E51B00657271 /* Switcher.swift */,
+				D1816DF42246F13E00E6A475 /* Constants.swift */,
+				D1816DF62246FE9F00E6A475 /* Util.swift */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+		D13D750B2256747F00F16033 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				D11F0E772242E46100657271 /* LoginViewController.swift */,
+				D11F0E7B2242F54500657271 /* SignUpViewController.swift */,
+				D1FE059B224EFE45004A0294 /* MapViewController.swift */,
+				D1816DFE2247289100E6A475 /* PostViewController.swift */,
+				D1F48E582238596300614C9E /* CameraViewController.swift */,
+				D1816DFA224712DD00E6A475 /* ChooseFriendTableViewController.swift */,
+				D1B05F6C224435F900153D7D /* ProfileViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		D13D750C2256749400F16033 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				D1FE059D224F081D004A0294 /* Post.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		D1F48E4A2238596300614C9E = {
 			isa = PBXGroup;
 			children = (
@@ -142,21 +180,13 @@
 		D1F48E552238596300614C9E /* whereabouts */ = {
 			isa = PBXGroup;
 			children = (
-				D1FE05BC224F576A004A0294 /* location */,
 				D1F48E5C2238596300614C9E /* Main.storyboard */,
 				D1F48E562238596300614C9E /* AppDelegate.swift */,
-				D11F0E772242E46100657271 /* LoginViewController.swift */,
-				D11F0E7B2242F54500657271 /* SignUpViewController.swift */,
-				D1FE059B224EFE45004A0294 /* MapViewController.swift */,
-				D1FE05A1224F1B94004A0294 /* PostMarkerView.swift */,
-				D1FE05AD224F31E0004A0294 /* PostFlagView.swift */,
-				D1F48E582238596300614C9E /* CameraViewController.swift */,
-				D1816DFA224712DD00E6A475 /* ChooseFriendTableViewController.swift */,
-				D1816DFC2247240B00E6A475 /* PostsTableViewController.swift */,
-				D1816DFE2247289100E6A475 /* PostViewController.swift */,
-				D1B05F6C224435F900153D7D /* ProfileViewController.swift */,
-				D1816DF82247047200E6A475 /* FriendsTableViewController.swift */,
-				D1FE059D224F081D004A0294 /* Post.swift */,
+				D13D750B2256747F00F16033 /* controller */,
+				D13D750C2256749400F16033 /* model */,
+				D13D750A2256746B00F16033 /* helper */,
+				D13D75092256745D00F16033 /* ui */,
+				D1FE05BC224F576A004A0294 /* location */,
 				D1F48E5F2238596400614C9E /* Assets.xcassets */,
 				D1FE05B3224F3CF7004A0294 /* locked.png */,
 				D1FE05B1224F3B57004A0294 /* unlocked.png */,
@@ -164,10 +194,6 @@
 				D13D75052256642B00F16033 /* GoogleService-Info.plist */,
 				D1F48E642238596400614C9E /* Info.plist */,
 				D1FE059F224F13B2004A0294 /* img_lights.jpg */,
-				D11F0E792242E51B00657271 /* Switcher.swift */,
-				D1816DF42246F13E00E6A475 /* Constants.swift */,
-				D1816DF62246FE9F00E6A475 /* Util.swift */,
-				D13D750722566ADE00F16033 /* MyTabBarController.swift */,
 			);
 			path = whereabouts;
 			sourceTree = "<group>";
@@ -393,7 +419,6 @@
 				D11F0E7C2242F54500657271 /* SignUpViewController.swift in Sources */,
 				D11F0E7A2242E51B00657271 /* Switcher.swift in Sources */,
 				D1FE059E224F081D004A0294 /* Post.swift in Sources */,
-				D1816DF92247047200E6A475 /* FriendsTableViewController.swift in Sources */,
 				D1FE059C224EFE45004A0294 /* MapViewController.swift in Sources */,
 				D1FE05AE224F31E0004A0294 /* PostFlagView.swift in Sources */,
 				D1F48E572238596300614C9E /* AppDelegate.swift in Sources */,
@@ -401,7 +426,6 @@
 				D11F0E782242E46100657271 /* LoginViewController.swift in Sources */,
 				D1F48E592238596300614C9E /* CameraViewController.swift in Sources */,
 				D1FE05A2224F1B94004A0294 /* PostMarkerView.swift in Sources */,
-				D1816DFD2247240B00E6A475 /* PostsTableViewController.swift in Sources */,
 				D1816DF52246F13E00E6A475 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
