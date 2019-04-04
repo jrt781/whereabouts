@@ -16,6 +16,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var captureImageView: UIImageView!
+    @IBOutlet weak var takePictureButton: UIButton!
     
     var imagePicker: UIImagePickerController!
     
@@ -66,7 +67,16 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             print("Error Unable to initialize back camera:  \(error.localizedDescription)")
         }
         
-        
+        takePictureButton.addTarget(self, action: #selector(takePictureButtonPressedDown), for: .touchDown)
+        takePictureButton.addTarget(self, action: #selector(takePictureButtonReleased), for: .touchUpInside)
+    }
+    
+    @objc func takePictureButtonPressedDown() {
+        takePictureButton.backgroundColor = UIColor.gray
+    }
+    
+    @objc func takePictureButtonReleased() {
+        takePictureButton.backgroundColor = UIColor.white
     }
     
     func setupLivePreview() {
@@ -122,31 +132,6 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBAction func sendPhotoToFriends(_ sender: Any) {
         self.performSegue(withIdentifier: "chooseFriend", sender: self)
     }
-    
-    //    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view, typically from a nib.
-//
-//        // Create references to Firebase
-//        self.storageRef = Storage.storage().reference()
-//        self.ref = Database.database().reference()
-//
-////        ref.child("users").child("yeet").setValue(["username": "yo mama"])
-//
-//        // Create a reference to the file you want to download
-//        let riversRef = storageRef.child("images/rivers.jpg")
-//
-//        // Download in memory with a maximum allowed size of 20MB (20 * 1024 * 1024 bytes)
-//        riversRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
-//            if error != nil {
-//                print("There was an error: ", error!.localizedDescription)
-//            } else {
-//                // Data for "images/island.jpg" is returned
-//                self.imageView.image = UIImage(data: data!)
-//            }
-//        }
-//    }
-    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "chooseFriend") {
