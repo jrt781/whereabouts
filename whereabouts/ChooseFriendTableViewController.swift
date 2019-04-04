@@ -12,6 +12,8 @@ import FirebaseStorage
 
 class ChooseFriendTableViewController: UITableViewController {
     
+    // TODO Show where the post is being made
+    
     fileprivate var ref: DatabaseReference!
     fileprivate var storageRef: StorageReference!
     
