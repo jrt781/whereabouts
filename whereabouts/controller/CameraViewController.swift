@@ -94,6 +94,9 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, AV
     
     // TODO keep state in camera view so we can tell the difference between returning to the view after sending the photo and going back before sending in case you want to retake the picture? or maybe always set it up so returning means retaking a picture
     
+    // TODO tab icons
+    // TODO app icon
+    
     @IBAction func didTakePhoto(_ sender: Any) {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
         stillImageOutput.capturePhoto(with: settings, delegate: self)

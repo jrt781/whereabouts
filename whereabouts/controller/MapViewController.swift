@@ -117,7 +117,6 @@ class MapViewController: UIViewController, LocationObserver {
     
     // TODO store posts in model?????
     // TODO appropriately tell users that they can't open image of locked posts
-    // TODO get posts from friends even when app is closed
     // TODO Record the times the posts were made and when they were unlocked and/or seen, and display the most recent posts
     // TODO allow users to post photos from library
     
