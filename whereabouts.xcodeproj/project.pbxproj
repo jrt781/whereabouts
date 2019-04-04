@@ -14,6 +14,7 @@
 		D11F0E7C2242F54500657271 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F0E7B2242F54500657271 /* SignUpViewController.swift */; };
 		D13D75062256642B00F16033 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D13D75052256642B00F16033 /* GoogleService-Info.plist */; };
 		D13D750822566ADE00F16033 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13D750722566ADE00F16033 /* MyTabBarController.swift */; };
+		D13D751622567B4500F16033 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = D13D751522567B4500F16033 /* forward.png */; };
 		D1816DF52246F13E00E6A475 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF42246F13E00E6A475 /* Constants.swift */; };
 		D1816DF72246FE9F00E6A475 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DF62246FE9F00E6A475 /* Util.swift */; };
 		D1816DFB224712DD00E6A475 /* ChooseFriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1816DFA224712DD00E6A475 /* ChooseFriendTableViewController.swift */; };
@@ -58,6 +59,7 @@
 		D11F0E7B2242F54500657271 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D13D75052256642B00F16033 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D13D750722566ADE00F16033 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		D13D751522567B4500F16033 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forward.png; path = ../../../../Downloads/forward.png; sourceTree = "<group>"; };
 		D1816DF42246F13E00E6A475 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D1816DF62246FE9F00E6A475 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		D1816DFA224712DD00E6A475 /* ChooseFriendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFriendTableViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				D13D75092256745D00F16033 /* ui */,
 				D1FE05BC224F576A004A0294 /* location */,
 				D1F48E5F2238596400614C9E /* Assets.xcassets */,
+				D13D751522567B4500F16033 /* forward.png */,
 				D1FE05B3224F3CF7004A0294 /* locked.png */,
 				D1FE05B1224F3B57004A0294 /* unlocked.png */,
 				D1F48E612238596400614C9E /* LaunchScreen.storyboard */,
@@ -314,6 +317,7 @@
 				D1F48E632238596400614C9E /* LaunchScreen.storyboard in Resources */,
 				D1FE05B2224F3B57004A0294 /* unlocked.png in Resources */,
 				D1F48E602238596400614C9E /* Assets.xcassets in Resources */,
+				D13D751622567B4500F16033 /* forward.png in Resources */,
 				D1F48E5E2238596300614C9E /* Main.storyboard in Resources */,
 				D1FE05A0224F13B2004A0294 /* img_lights.jpg in Resources */,
 				D1FE05B4224F3CF7004A0294 /* locked.png in Resources */,
