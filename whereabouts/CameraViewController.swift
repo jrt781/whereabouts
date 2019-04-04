@@ -7,21 +7,17 @@
 //
 
 import UIKit
-import FirebaseStorage
-import FirebaseDatabase
 import FirebaseAuth
 import AVFoundation
 
-class CameraViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, AVCapturePhotoCaptureDelegate {
+class CameraViewController: UIViewController, UINavigationControllerDelegate, AVCapturePhotoCaptureDelegate {
 
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var captureImageView: UIImageView!
+    
     @IBOutlet weak var takePictureButton: UIButton!
-    
-    var imagePicker: UIImagePickerController!
-    
-    fileprivate var ref: DatabaseReference!
-    fileprivate var storageRef: StorageReference!
+    @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var retakeButton: UIButton!
     
     // Variables for custom camera
     var captureSession: AVCaptureSession!
@@ -38,6 +34,10 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             // ...
         }
+        
+        takePictureButton.addTarget(self, action: #selector(takePictureButtonPressedDown), for: .touchDown)
+        takePictureButton.addTarget(self, action: #selector(takePictureButtonReleased), for: .touchUpInside)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,9 +66,6 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         catch let error  {
             print("Error Unable to initialize back camera:  \(error.localizedDescription)")
         }
-        
-        takePictureButton.addTarget(self, action: #selector(takePictureButtonPressedDown), for: .touchDown)
-        takePictureButton.addTarget(self, action: #selector(takePictureButtonReleased), for: .touchUpInside)
     }
     
     @objc func takePictureButtonPressedDown() {
@@ -95,19 +92,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         }
     }
     
-    // TODO customize "take photo" button
-    
-    // TODO change camera state once pic is taken:
-        // TODO hide preview
-        // TODO hide "take photo" button
-        // TODO show "retake" button
-        // TODO show "send to friends" button
-    
-    // TODO Let the user retake photo
-        // TODO reshow preview
-        // TODO reshow "take photo" button
-        // TODO hide "send to friends" button
-        // TODO hide "retake" button
+    // TODO keep state in camera view so we can tell the difference between returning to the view after sending the photo and going back before sending in case you want to retake the picture? or maybe always set it up so returning means retaking a picture
     
     @IBAction func didTakePhoto(_ sender: Any) {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
@@ -121,6 +106,10 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         
         let image = UIImage(data: imageData)
         captureImageView.image = image
+        
+        takePictureButton.isHidden = true
+        continueButton.isHidden = false
+        retakeButton.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -129,10 +118,17 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
-    @IBAction func sendPhotoToFriends(_ sender: Any) {
+    @IBAction func continueButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "chooseFriend", sender: self)
     }
-
+    
+    @IBAction func retakeButtonPressed(_ sender: Any) {
+        captureImageView.image = nil
+        takePictureButton.isHidden = false
+        continueButton.isHidden = true
+        retakeButton.isHidden = true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "chooseFriend") {
             // Data in memory

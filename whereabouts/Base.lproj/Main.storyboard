@@ -33,15 +33,8 @@
                                     <constraint firstAttribute="width" secondItem="rmq-NK-lda" secondAttribute="height" multiplier="3:4" id="zkT-Ca-eU7"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1A2-6a-NpE">
-                                <rect key="frame" x="303.5" y="572" width="152" height="30"/>
-                                <state key="normal" title="Send Photo to Friends"/>
-                                <connections>
-                                    <action selector="sendPhotoToFriends:" destination="9pv-A4-QxB" eventType="touchUpInside" id="rDl-X7-O3I"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncg-JA-eq4">
-                                <rect key="frame" x="147.5" y="489" width="80" height="80"/>
+                                <rect key="frame" x="147.5" y="464" width="80" height="80"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="PGe-7A-dlY"/>
@@ -56,31 +49,75 @@
                                     <action selector="didTakePhoto:" destination="9pv-A4-QxB" eventType="touchUpInside" id="deq-pQ-gXn"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1A2-6a-NpE">
+                                <rect key="frame" x="234" y="494" width="125" height="50"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="125" id="EfI-pn-KZT"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="H3m-qH-9U8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="continueButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="KYM-hr-kFX"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmE-Eu-evR">
+                                <rect key="frame" x="16" y="494" width="125" height="50"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="71f-xN-lAH"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="125" id="klj-pR-pGC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Retake">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="retakeButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="ILP-pP-aeA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vDb-Ub-P2v" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="2WG-Ex-G8m"/>
-                            <constraint firstItem="1A2-6a-NpE" firstAttribute="leading" secondItem="Ncg-JA-eq4" secondAttribute="trailing" constant="76" id="MPP-o4-lgv"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="1A2-6a-NpE" secondAttribute="trailing" constant="16" id="95n-as-jve"/>
                             <constraint firstItem="rmq-NK-lda" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="Pfb-NT-bOy"/>
-                            <constraint firstItem="Ncg-JA-eq4" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="425" id="Wm1-wk-l9r"/>
-                            <constraint firstItem="1A2-6a-NpE" firstAttribute="top" secondItem="vDb-Ub-P2v" secondAttribute="bottom" constant="8" id="aSz-8w-GNn"/>
+                            <constraint firstItem="zmE-Eu-evR" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="WR5-O7-s2F"/>
+                            <constraint firstItem="Ncg-JA-eq4" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="400" id="Wm1-wk-l9r"/>
                             <constraint firstItem="Ncg-JA-eq4" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="dUm-7S-tee"/>
+                            <constraint firstItem="1A2-6a-NpE" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="430" id="i1t-0m-oQu"/>
                             <constraint firstItem="vDb-Ub-P2v" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="jFz-Sf-6Iz"/>
                             <constraint firstItem="rmq-NK-lda" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="je2-q4-9lG"/>
+                            <constraint firstItem="zmE-Eu-evR" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="430" id="mUg-ca-UIT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" id="mAG-f7-Aw6"/>
                     <connections>
                         <outlet property="captureImageView" destination="rmq-NK-lda" id="Ryg-tc-RbU"/>
+                        <outlet property="continueButton" destination="1A2-6a-NpE" id="NUU-Fa-THH"/>
                         <outlet property="previewView" destination="vDb-Ub-P2v" id="C7U-XM-yPQ"/>
+                        <outlet property="retakeButton" destination="zmE-Eu-evR" id="lk6-ad-9tg"/>
                         <outlet property="takePictureButton" destination="Ncg-JA-eq4" id="Ivc-tw-fqd"/>
                         <segue destination="idL-Vm-GIA" kind="show" identifier="chooseFriend" id="szS-gs-QnE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3793" y="-774"/>
+            <point key="canvasLocation" x="3792.8000000000002" y="-774.06296851574223"/>
         </scene>
         <!--Choose Friend Table View Controller-->
         <scene sceneID="DSZ-sm-KkA">
