@@ -37,6 +37,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UITableViewD
         self.ref = Database.database().reference()
 
         findFriendsTextField.delegate = self
+        
+        guard let currentUsername = UserDefaults.standard.string(forKey: Constants.CURRENT_USERNAME) else {
+            // Error: user is not logged in somehow?? Just log them out
+            UserDefaults.standard.set(false, forKey: Constants.IS_LOGGED_IN)
+            Switcher.updateRootVC()
+            return
+        }
+        
+        self.navigationItem.title = currentUsername + "'s Profile"
     }
     
     @IBAction func logoutPressed(_ sender: Any) {
@@ -58,7 +67,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UITableViewD
             // Error: user is not logged in somehow?? Just log them out
             UserDefaults.standard.set(false, forKey: Constants.IS_LOGGED_IN)
             Switcher.updateRootVC()
-            return false;
+            return false
         }
         
         let username = textField.text ?? ""

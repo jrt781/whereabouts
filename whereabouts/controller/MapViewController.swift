@@ -22,7 +22,7 @@ class MapViewController: UIViewController, LocationObserver {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    let regionRadius: CLLocationDistance = 100 // 100 meters
+    let regionRadius: CLLocationDistance = 250 // 250 meters
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
 
